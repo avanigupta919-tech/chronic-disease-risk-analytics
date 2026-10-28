@@ -1,0 +1,351 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<workbook source-build='2024.1.0' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <MapboxVectorStylesAndLayers />
+    <SetMembershipFilter />
+    <SheetIdentifierTracking />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Chronic Disease Analytics Dataset' inline='true' name='federated.chronic_disease_data' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='tableau_dataset' name='textscan.tableau_dataset'>
+            <connection class='textscan' directory='data/tableau' filename='tableau_dataset.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.tableau_dataset' name='tableau_dataset.csv' table='[tableau_dataset#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='patient_id' ordinal='0' />
+            <column datatype='integer' name='age' ordinal='1' />
+            <column datatype='string' name='gender' ordinal='2' />
+            <column datatype='integer' name='systolic_bp' ordinal='3' />
+            <column datatype='integer' name='diastolic_bp' ordinal='4' />
+            <column datatype='integer' name='total_cholesterol' ordinal='5' />
+            <column datatype='integer' name='fasting_glucose' ordinal='6' />
+            <column datatype='real' name='bmi' ordinal='7' />
+            <column datatype='string' name='smoking_habit' ordinal='8' />
+            <column datatype='string' name='alcohol_consumption' ordinal='9' />
+            <column datatype='string' name='exercise_level' ordinal='10' />
+            <column datatype='string' name='diet_quality' ordinal='11' />
+            <column datatype='string' name='fatigue_condition' ordinal='12' />
+            <column datatype='string' name='chest_pain_symptoms' ordinal='13' />
+            <column datatype='string' name='dizziness_patterns' ordinal='14' />
+            <column datatype='integer' name='heart_disease' ordinal='15' />
+            <column datatype='integer' name='diabetes' ordinal='16' />
+            <column datatype='integer' name='stroke' ordinal='17' />
+            <column datatype='integer' name='kidney_disease' ordinal='18' />
+            <column datatype='integer' name='multimorbidity_count' ordinal='19' />
+            <column datatype='real' name='clinical_risk_score' ordinal='20' />
+            <column datatype='string' name='risk_tier' ordinal='21' />
+            <column datatype='string' name='clinical_recommendation' ordinal='22' />
+            <column datatype='string' name='age_group' ordinal='23' />
+            <column datatype='string' name='bmi_category' ordinal='24' />
+            <column datatype='string' name='bp_category' ordinal='25' />
+            <column datatype='string' name='cholesterol_category' ordinal='26' />
+            <column datatype='string' name='glucose_category' ordinal='27' />
+            <column datatype='string' name='lifestyle_risk_tier' ordinal='28' />
+            <column datatype='string' name='symptom_severity_tier' ordinal='29' />
+            <column datatype='integer' name='cardiovascular_warning' ordinal='30' />
+            <column datatype='integer' name='metabolic_syndrome_flag' ordinal='31' />
+            <column datatype='integer' name='stroke_vulnerability_index' ordinal='32' />
+            <column datatype='string' name='diagnosed_conditions' ordinal='33' />
+          </columns>
+        </relation>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Patient ID' datatype='string' name='[patient_id]' role='dimension' type='nominal' />
+      <column caption='Age' datatype='integer' name='[age]' role='dimension' type='quantitative' />
+      <column caption='Gender' datatype='string' name='[gender]' role='dimension' type='nominal' />
+      <column caption='Systolic BP (mmHg)' datatype='integer' name='[systolic_bp]' role='measure' type='quantitative' />
+      <column caption='Diastolic BP (mmHg)' datatype='integer' name='[diastolic_bp]' role='measure' type='quantitative' />
+      <column caption='Total Cholesterol (mg/dL)' datatype='integer' name='[total_cholesterol]' role='measure' type='quantitative' />
+      <column caption='Fasting Glucose (mg/dL)' datatype='integer' name='[fasting_glucose]' role='measure' type='quantitative' />
+      <column caption='Body Mass Index (BMI)' datatype='real' name='[bmi]' role='measure' type='quantitative' />
+      <column caption='Smoking Habit' datatype='string' name='[smoking_habit]' role='dimension' type='nominal' />
+      <column caption='Alcohol Consumption' datatype='string' name='[alcohol_consumption]' role='dimension' type='nominal' />
+      <column caption='Exercise Level' datatype='string' name='[exercise_level]' role='dimension' type='nominal' />
+      <column caption='Diet Quality' datatype='string' name='[diet_quality]' role='dimension' type='nominal' />
+      <column caption='Fatigue Condition' datatype='string' name='[fatigue_condition]' role='dimension' type='nominal' />
+      <column caption='Chest Pain Symptoms' datatype='string' name='[chest_pain_symptoms]' role='dimension' type='nominal' />
+      <column caption='Dizziness Patterns' datatype='string' name='[dizziness_patterns]' role='dimension' type='nominal' />
+      <column caption='Heart Disease Flag' datatype='integer' name='[heart_disease]' role='measure' type='quantitative' />
+      <column caption='Diabetes Flag' datatype='integer' name='[diabetes]' role='measure' type='quantitative' />
+      <column caption='Stroke Flag' datatype='integer' name='[stroke]' role='measure' type='quantitative' />
+      <column caption='Kidney Disease Flag' datatype='integer' name='[kidney_disease]' role='measure' type='quantitative' />
+      <column caption='Multi-morbidity Count' datatype='integer' name='[multimorbidity_count]' role='measure' type='quantitative' />
+      <column caption='Clinical Risk Score' datatype='real' name='[clinical_risk_score]' role='measure' type='quantitative' />
+      <column caption='Risk Tier' datatype='string' name='[risk_tier]' role='dimension' type='nominal' />
+      <column caption='Clinical Recommendation' datatype='string' name='[clinical_recommendation]' role='dimension' type='nominal' />
+      <column caption='Age Group' datatype='string' name='[age_group]' role='dimension' type='nominal' />
+      <column caption='BMI Category' datatype='string' name='[bmi_category]' role='dimension' type='nominal' />
+      <column caption='BP Category' datatype='string' name='[bp_category]' role='dimension' type='nominal' />
+      <column caption='Cholesterol Category' datatype='string' name='[cholesterol_category]' role='dimension' type='nominal' />
+      <column caption='Glucose Category' datatype='string' name='[glucose_category]' role='dimension' type='nominal' />
+      <column caption='Lifestyle Risk Tier' datatype='string' name='[lifestyle_risk_tier]' role='dimension' type='nominal' />
+      <column caption='Symptom Severity Tier' datatype='string' name='[symptom_severity_tier]' role='dimension' type='nominal' />
+      <column caption='Cardiovascular Warning' datatype='integer' name='[cardiovascular_warning]' role='measure' type='quantitative' />
+      <column caption='Metabolic Syndrome Flag' datatype='integer' name='[metabolic_syndrome_flag]' role='measure' type='quantitative' />
+      <column caption='Stroke Vulnerability Index' datatype='integer' name='[stroke_vulnerability_index]' role='measure' type='quantitative' />
+
+      <!-- Calculated Fields -->
+      <column caption='High Risk Patient Count' datatype='integer' name='[calc_high_risk_count]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='ZN(SUM(IF [risk_tier] = &quot;High Risk&quot; OR [risk_tier] = &quot;Critical / Urgent&quot; THEN 1 ELSE 0 END))' />
+      </column>
+      <column caption='Total Patient Count' datatype='integer' name='[calc_total_patients]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNT([patient_id])' />
+      </column>
+      <column caption='High Risk Prevalence (%)' datatype='real' name='[calc_high_risk_pct]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[calc_high_risk_count] / [calc_total_patients] * 100' />
+      </column>
+      <column caption='Heart Disease Rate (%)' datatype='real' name='[calc_heart_disease_rate]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([heart_disease]) / [calc_total_patients] * 100' />
+      </column>
+      <column caption='Diabetes Rate (%)' datatype='real' name='[calc_diabetes_rate]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([diabetes]) / [calc_total_patients] * 100' />
+      </column>
+      <column caption='Stroke Rate (%)' datatype='real' name='[calc_stroke_rate]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([stroke]) / [calc_total_patients] * 100' />
+      </column>
+      <column caption='Cardiovascular Triage Alert' datatype='string' name='[calc_cardio_triage]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IF [systolic_bp] &gt;= 160 OR [total_cholesterol] &gt;= 260 OR [chest_pain_symptoms] = &quot;Typical Angina / Severe&quot; THEN &quot;CRITICAL CARDIAC ALERT&quot; ELSEIF [systolic_bp] &gt;= 140 OR [total_cholesterol] &gt;= 240 THEN &quot;ELEVATED RISK&quot; ELSE &quot;STABLE&quot; END' />
+      </column>
+    </datasource>
+  </datasources>
+
+  <worksheets>
+    <!-- Sheet 1: Executive KPI Scorecard -->
+    <worksheet name='KPI_Scorecards'>
+      <table>
+        <view>
+          <measures>
+            <measure>[federated.chronic_disease_data].[calc_total_patients]</measure>
+            <measure>[federated.chronic_disease_data].[calc_high_risk_count]</measure>
+            <measure>[federated.chronic_disease_data].[calc_high_risk_pct]</measure>
+            <measure>[federated.chronic_disease_data].[calc_heart_disease_rate]</measure>
+            <measure>[federated.chronic_disease_data].[calc_diabetes_rate]</measure>
+            <measure>[federated.chronic_disease_data].[calc_stroke_rate]</measure>
+          </measures>
+        </view>
+      </table>
+    </worksheet>
+
+    <!-- Sheet 2: Blood Pressure Distribution Matrix -->
+    <worksheet name='BP_Distribution_Matrix'>
+      <table>
+        <view>
+          <columns>[federated.chronic_disease_data].[systolic_bp]</columns>
+          <rows>[federated.chronic_disease_data].[diastolic_bp]</rows>
+          <color>[federated.chronic_disease_data].[bp_category]</color>
+        </view>
+      </table>
+    </worksheet>
+
+    <!-- Sheet 3: Fasting Glucose vs BMI Matrix -->
+    <worksheet name='Glucose_vs_BMI_Matrix'>
+      <table>
+        <view>
+          <columns>[federated.chronic_disease_data].[bmi]</columns>
+          <rows>[federated.chronic_disease_data].[fasting_glucose]</rows>
+          <color>[federated.chronic_disease_data].[risk_tier]</color>
+        </view>
+      </table>
+    </worksheet>
+
+    <!-- Sheet 4: Cholesterol Levels Across Age Cohorts -->
+    <worksheet name='Cholesterol_by_Age_Cohorts'>
+      <table>
+        <view>
+          <columns>[federated.chronic_disease_data].[age_group]</columns>
+          <rows>[federated.chronic_disease_data].[total_cholesterol]</rows>
+          <color>[federated.chronic_disease_data].[cholesterol_category]</color>
+        </view>
+      </table>
+    </worksheet>
+
+    <!-- Sheet 5: Multi-morbidity Burden Breakdown -->
+    <worksheet name='Multimorbidity_Breakdown'>
+      <table>
+        <view>
+          <columns>[federated.chronic_disease_data].[multimorbidity_count]</columns>
+          <rows>[federated.chronic_disease_data].[calc_total_patients]</rows>
+          <color>[federated.chronic_disease_data].[risk_tier]</color>
+        </view>
+      </table>
+    </worksheet>
+
+    <!-- Sheet 6: Smoking Habit vs Heart Disease Heatmap -->
+    <worksheet name='Smoking_vs_CAD_Heatmap'>
+      <table>
+        <view>
+          <columns>[federated.chronic_disease_data].[smoking_habit]</columns>
+          <rows>[federated.chronic_disease_data].[age_group]</rows>
+          <color>[federated.chronic_disease_data].[calc_heart_disease_rate]</color>
+        </view>
+      </table>
+    </worksheet>
+
+    <!-- Sheet 7: Alcohol Consumption vs Stroke Rate -->
+    <worksheet name='Alcohol_vs_Stroke_Risk'>
+      <table>
+        <view>
+          <columns>[federated.chronic_disease_data].[alcohol_consumption]</columns>
+          <rows>[federated.chronic_disease_data].[calc_stroke_rate]</rows>
+          <color>[federated.chronic_disease_data].[alcohol_consumption]</color>
+        </view>
+      </table>
+    </worksheet>
+
+    <!-- Sheet 8: Physical Activity Protective Factor -->
+    <worksheet name='Exercise_Protective_Gradient'>
+      <table>
+        <view>
+          <columns>[federated.chronic_disease_data].[exercise_level]</columns>
+          <rows>[federated.chronic_disease_data].[calc_high_risk_pct]</rows>
+          <color>[federated.chronic_disease_data].[exercise_level]</color>
+        </view>
+      </table>
+    </worksheet>
+
+    <!-- Sheet 9: Diet Quality vs Metabolic Syndrome -->
+    <worksheet name='Diet_vs_Metabolic_Syndrome'>
+      <table>
+        <view>
+          <columns>[federated.chronic_disease_data].[diet_quality]</columns>
+          <rows>[federated.chronic_disease_data].[metabolic_syndrome_flag]</rows>
+          <color>[federated.chronic_disease_data].[diet_quality]</color>
+        </view>
+      </table>
+    </worksheet>
+
+    <!-- Sheet 10: Age Group & Gender Demographic Pyramid -->
+    <worksheet name='Demographic_Prevalence_Pyramid'>
+      <table>
+        <view>
+          <columns>[federated.chronic_disease_data].[gender]</columns>
+          <rows>[federated.chronic_disease_data].[age_group]</rows>
+          <measures>[federated.chronic_disease_data].[calc_high_risk_count]</measures>
+        </view>
+      </table>
+    </worksheet>
+
+    <!-- Sheet 11: BMI Category Vulnerability Gradients -->
+    <worksheet name='BMI_Vulnerability_Gradients'>
+      <table>
+        <view>
+          <columns>[federated.chronic_disease_data].[bmi_category]</columns>
+          <rows>[federated.chronic_disease_data].[calc_diabetes_rate]</rows>
+          <color>[federated.chronic_disease_data].[bmi_category]</color>
+        </view>
+      </table>
+    </worksheet>
+
+    <!-- Sheet 12: Symptom Frequency & Diagnoses Co-occurrence -->
+    <worksheet name='Symptom_Prevalence_Matrix'>
+      <table>
+        <view>
+          <columns>[federated.chronic_disease_data].[chest_pain_symptoms]</columns>
+          <rows>[federated.chronic_disease_data].[fatigue_condition]</rows>
+          <color>[federated.chronic_disease_data].[calc_heart_disease_rate]</color>
+        </view>
+      </table>
+    </worksheet>
+
+    <!-- Sheet 13: High-Risk Patient Triage Roster -->
+    <worksheet name='Patient_Triage_Roster'>
+      <table>
+        <view>
+          <columns>[federated.chronic_disease_data].[patient_id]</columns>
+          <columns>[federated.chronic_disease_data].[age]</columns>
+          <columns>[federated.chronic_disease_data].[systolic_bp]</columns>
+          <columns>[federated.chronic_disease_data].[total_cholesterol]</columns>
+          <columns>[federated.chronic_disease_data].[fasting_glucose]</columns>
+          <columns>[federated.chronic_disease_data].[risk_tier]</columns>
+          <columns>[federated.chronic_disease_data].[clinical_recommendation]</columns>
+        </view>
+      </table>
+    </worksheet>
+
+    <!-- Sheet 14: Clinical Risk Score Histogram -->
+    <worksheet name='Clinical_Risk_Distribution'>
+      <table>
+        <view>
+          <columns>[federated.chronic_disease_data].[clinical_risk_score]</columns>
+          <rows>[federated.chronic_disease_data].[calc_total_patients]</rows>
+          <color>[federated.chronic_disease_data].[risk_tier]</color>
+        </view>
+      </table>
+    </worksheet>
+
+    <!-- Sheet 15: Prevention & Intervention Opportunity -->
+    <worksheet name='Prevention_Opportunity_Matrix'>
+      <table>
+        <view>
+          <columns>[federated.chronic_disease_data].[lifestyle_risk_tier]</columns>
+          <rows>[federated.chronic_disease_data].[risk_tier]</rows>
+          <measures>[federated.chronic_disease_data].[calc_total_patients]</measures>
+        </view>
+      </table>
+    </worksheet>
+  </worksheets>
+
+  <dashboards>
+    <!-- Scenario 1: Dr. Michael Carter Clinical Dashboard -->
+    <dashboard name='Dashboard_Clinical_Risk_Officer'>
+      <style>
+        <color-palette name='Clinical_Theme' />
+      </style>
+      <zones>
+        <zone h='1000' id='1' name='Dashboard_Clinical_Officer_Layout' w='1000' x='0' y='0'>
+          <zone h='120' id='2' name='KPI_Scorecards' w='1000' x='0' y='0' />
+          <zone h='420' id='3' name='BP_Distribution_Matrix' w='500' x='0' y='120' />
+          <zone h='420' id='4' name='Glucose_vs_BMI_Matrix' w='500' x='500' y='120' />
+          <zone h='460' id='5' name='Patient_Triage_Roster' w='1000' x='0' y='540' />
+        </zone>
+      </zones>
+    </dashboard>
+
+    <!-- Scenario 2: Emily Rodriguez Healthcare Data Analyst Dashboard -->
+    <dashboard name='Dashboard_Lifestyle_Data_Analyst'>
+      <zones>
+        <zone h='1000' id='6' name='Dashboard_Analyst_Layout' w='1000' x='0' y='0'>
+          <zone h='450' id='7' name='Smoking_vs_CAD_Heatmap' w='500' x='0' y='0' />
+          <zone h='450' id='8' name='Alcohol_vs_Stroke_Risk' w='500' x='500' y='0' />
+          <zone h='450' id='9' name='Exercise_Protective_Gradient' w='500' x='0' y='450' />
+          <zone h='450' id='10' name='Diet_vs_Metabolic_Syndrome' w='500' x='500' y='450' />
+          <zone h='100' id='11' name='KPI_Scorecards' w='1000' x='0' y='900' />
+        </zone>
+      </zones>
+    </dashboard>
+
+    <!-- Scenario 3: Dr. Priya Nair Public Health Researcher Dashboard -->
+    <dashboard name='Dashboard_Public_Health_Researcher'>
+      <zones>
+        <zone h='1000' id='12' name='Dashboard_Public_Health_Layout' w='1000' x='0' y='0'>
+          <zone h='450' id='13' name='Demographic_Prevalence_Pyramid' w='500' x='0' y='0' />
+          <zone h='450' id='14' name='BMI_Vulnerability_Gradients' w='500' x='500' y='0' />
+          <zone h='450' id='15' name='Symptom_Prevalence_Matrix' w='500' x='0' y='450' />
+          <zone h='450' id='16' name='Prevention_Opportunity_Matrix' w='500' x='500' y='450' />
+          <zone h='100' id='17' name='KPI_Scorecards' w='1000' x='0' y='900' />
+        </zone>
+      </zones>
+    </dashboard>
+  </dashboards>
+
+  <windows>
+    <window class='story' name='Chronic_Disease_Strategic_Story'>
+      <story-points>
+        <story-point caption='Scene 1: The Escalating Burden of Chronic Illness' sheet='KPI_Scorecards' />
+        <story-point caption='Scene 2: Clinical Risk Stratification &amp; Early Triage (Dr. Michael Carter)' sheet='Dashboard_Clinical_Risk_Officer' />
+        <story-point caption='Scene 3: Lifestyle &amp; Behavioral Determinants (Emily Rodriguez)' sheet='Dashboard_Lifestyle_Data_Analyst' />
+        <story-point caption='Scene 4: Vulnerable Populations &amp; Demographic Disparities (Dr. Priya Nair)' sheet='Dashboard_Public_Health_Researcher' />
+        <story-point caption='Scene 5: Strategic Action Plan: Proactive Interventions &amp; Resource Allocation' sheet='Prevention_Opportunity_Matrix' />
+      </story-points>
+    </window>
+  </windows>
+</workbook>

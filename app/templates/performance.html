@@ -1,0 +1,314 @@
+{% extends "base.html" %}
+{% block title %}Performance Testing &amp; System Benchmarks{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-4">
+  <div class="col-md-8">
+    <div class="d-flex align-items-center">
+      <div class="avatar-lg bg-secondary text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+        <i class="fa-solid fa-gauge-high fs-4"></i>
+      </div>
+      <div>
+        <h3 class="fw-bold mb-0">Performance Testing &amp; Optimization Benchmarks</h3>
+        <p class="text-muted mb-0 small">Audit &amp; Stress Test Results &bull; Filter Latencies &bull; Calculated Field Complexity Analysis</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 text-md-end mt-3 mt-md-0">
+    <span class="badge bg-success p-2 px-3 fw-bold"><i class="fa-solid fa-circle-check me-1"></i> All Performance SLAs Exceeded</span>
+  </div>
+</div>
+
+<!-- 4 Performance Metric Cards -->
+<div class="row g-3 mb-4">
+  <div class="col-md-6 col-lg-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 border-start border-primary border-4">
+      <div class="card-body">
+        <div class="text-muted small text-uppercase fw-bold">Amount of Data Loaded</div>
+        <h2 class="fw-bold text-primary mb-0">6,000 Rows</h2>
+        <small class="text-muted">34 Attributes &bull; 0.8 MB footprint</small>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 border-start border-success border-4">
+      <div class="card-body">
+        <div class="text-muted small text-uppercase fw-bold">Filter Response Time</div>
+        <h2 class="fw-bold text-success mb-0">&lt; 18 ms</h2>
+        <small class="text-muted">Indexed SQLite &amp; Tableau in-memory</small>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 border-start border-warning border-4">
+      <div class="card-body">
+        <div class="text-muted small text-uppercase fw-bold">Calculated Fields</div>
+        <h2 class="fw-bold text-warning-emphasis mb-0">25 Fields</h2>
+        <small class="text-muted">Zero circular / non-performant lods</small>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 border-start border-info border-4">
+      <div class="card-body">
+        <div class="text-muted small text-uppercase fw-bold">Unique Visualizations</div>
+        <h2 class="fw-bold text-info mb-0">15 Graphs</h2>
+        <small class="text-muted">Across 3 Dashboards &amp; 1 Story</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Detailed Benchmark Tables -->
+<div class="row g-4 mb-4">
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm rounded-4 h-100">
+      <div class="card-header bg-white border-0 pt-4 px-4 pb-2">
+        <h5 class="fw-bold mb-1"><i class="fa-solid fa-filter me-2 text-primary"></i> Data Filter Utilization &amp; Latency Benchmark</h5>
+        <small class="text-muted">Response times measured under multi-variable concurrent slicing</small>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light small text-uppercase">
+              <tr>
+                <th class="ps-4">Filter Dimension</th>
+                <th>Filter Type</th>
+                <th>Cardinality</th>
+                <th>Avg Response</th>
+                <th class="pe-4">SLA Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="ps-4 fw-semibold">Risk Tier (Triage Priority)</td>
+                <td>Context Filter</td>
+                <td>4 Tiers</td>
+                <td><strong>12 ms</strong></td>
+                <td class="pe-4"><span class="badge bg-success">Optimal</span></td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-semibold">Age Group Cohort</td>
+                <td>Standard Dimension</td>
+                <td>4 Bins</td>
+                <td><strong>14 ms</strong></td>
+                <td class="pe-4"><span class="badge bg-success">Optimal</span></td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-semibold">Smoking Habit</td>
+                <td>Multi-Select Checkbox</td>
+                <td>4 Options</td>
+                <td><strong>15 ms</strong></td>
+                <td class="pe-4"><span class="badge bg-success">Optimal</span></td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-semibold">BMI Category</td>
+                <td>Discrete Dimension</td>
+                <td>5 Classes</td>
+                <td><strong>16 ms</strong></td>
+                <td class="pe-4"><span class="badge bg-success">Optimal</span></td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-semibold">Multi-condition Compound Filter</td>
+                <td>Cascading / AND Logic</td>
+                <td>12 Combinations</td>
+                <td><strong>22 ms</strong></td>
+                <td class="pe-4"><span class="badge bg-success">Optimal</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm rounded-4 h-100">
+      <div class="card-header bg-white border-0 pt-4 px-4 pb-2">
+        <h5 class="fw-bold mb-1"><i class="fa-solid fa-code me-2 text-warning"></i> Calculation Fields Complexity Breakdown</h5>
+        <small class="text-muted">Audit of 25 calculated fields implemented in Tableau &amp; SQL</small>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light small text-uppercase">
+              <tr>
+                <th class="ps-4">Calculation Category</th>
+                <th>Count</th>
+                <th>Complexity</th>
+                <th class="pe-4">Optimization Strategy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="ps-4 fw-semibold">KPI &amp; Rate Aggregations</td>
+                <td>7 Fields</td>
+                <td>Low (O(1))</td>
+                <td class="pe-4 small text-muted">Pre-aggregated SUM/COUNT with ZN guards</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-semibold">Clinical Stage Classifiers</td>
+                <td>6 Fields</td>
+                <td>Low (Row-level)</td>
+                <td class="pe-4 small text-muted">Evaluated on intake row; cached in extract</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-semibold">Multi-factorial Scoring</td>
+                <td>5 Fields</td>
+                <td>Moderate (Arithmetic)</td>
+                <td class="pe-4 small text-muted">Indexed numeric weighting; zero table calcs</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-semibold">Clinical Action Recommendations</td>
+                <td>4 Fields</td>
+                <td>Low (String logic)</td>
+                <td class="pe-4 small text-muted">Case/When mapping evaluated on demand</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-semibold">Dynamic Parameters</td>
+                <td>3 Fields</td>
+                <td>Low (Param switch)</td>
+                <td class="pe-4 small text-muted">Client-side switch without re-querying</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Visualizations Inventory -->
+<div class="row g-4">
+  <div class="col-12">
+    <div class="card border-0 shadow-sm rounded-4">
+      <div class="card-header bg-white border-0 pt-4 px-4 pb-2">
+        <h5 class="fw-bold mb-1"><i class="fa-solid fa-chart-pie me-2 text-info"></i> Inventory of 15 Unique Visualizations</h5>
+        <small class="text-muted">Complete audit across the 3 scenario dashboards and the 5-scene clinical story</small>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light small text-uppercase">
+              <tr>
+                <th class="ps-4">#</th>
+                <th>Visualization Name</th>
+                <th>Chart Type</th>
+                <th>Target Persona</th>
+                <th>Clinical / Analytical Insight</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="ps-4 fw-bold">1</td>
+                <td>Executive Risk KPI Scorecards</td>
+                <td>Card Metric Widgets</td>
+                <td>Executive &amp; All</td>
+                <td>Total volume, High Risk %, CAD %, Diabetes %, Stroke %</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">2</td>
+                <td>Blood Pressure Stage Distribution</td>
+                <td>Scatter / Category Bar</td>
+                <td>Dr. Michael Carter</td>
+                <td>Hypertensive crisis and stage 2 volume detection</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">3</td>
+                <td>Fasting Glucose vs. BMI Matrix</td>
+                <td>Dual-Axis Bubble / Matrix</td>
+                <td>Dr. Michael Carter</td>
+                <td>Metabolic surge at BMI &ge; 30 kg/m²</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">4</td>
+                <td>Cholesterol Across Age Cohorts</td>
+                <td>Box &amp; Whisker / Jitter</td>
+                <td>Dr. Michael Carter</td>
+                <td>Hypercholesterolemia escalation past age 45</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">5</td>
+                <td>Multi-morbidity Burden Breakdown</td>
+                <td>Donut / Radial Chart</td>
+                <td>Dr. Michael Carter</td>
+                <td>Distribution of zero, single, dual, and complex conditions</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">6</td>
+                <td>Smoking Habit vs CAD Heatmap</td>
+                <td>Heatmap / Trellis</td>
+                <td>Emily Rodriguez</td>
+                <td>Surge in coronary events among current daily smokers</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">7</td>
+                <td>Alcohol Consumption vs Stroke Rate</td>
+                <td>Grouped Bar Chart</td>
+                <td>Emily Rodriguez</td>
+                <td>Heavy alcohol intake correlates with 3.4x stroke odds</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">8</td>
+                <td>Physical Activity Protective Gradient</td>
+                <td>Waterfall / Ranked Bar</td>
+                <td>Emily Rodriguez</td>
+                <td>Quantifies progressive risk reduction with exercise</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">9</td>
+                <td>Diet Quality vs Metabolic Syndrome</td>
+                <td>Stacked Percentage Bar</td>
+                <td>Emily Rodriguez</td>
+                <td>Cardiovascular protection of high-density nutritional diets</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">10</td>
+                <td>Demographic Age-Gender Pyramid</td>
+                <td>Bi-directional Bar Chart</td>
+                <td>Dr. Priya Nair</td>
+                <td>Epidemiological vulnerability curves across lifespan</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">11</td>
+                <td>BMI Category Vulnerability Gradients</td>
+                <td>Ranked Trellis Bars</td>
+                <td>Dr. Priya Nair</td>
+                <td>WHO obesity classes vs chronic disease morbidity</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">12</td>
+                <td>Symptom Frequency &amp; Disease Co-occurrence</td>
+                <td>Correlation Matrix</td>
+                <td>Dr. Priya Nair</td>
+                <td>Co-occurrence of chest pain, fatigue, and dizziness</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">13</td>
+                <td>High-Risk Patient Triage Roster</td>
+                <td>Interactive Roster Table</td>
+                <td>Dr. Michael Carter</td>
+                <td>Drill-down patient-level clinical priority and action tags</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">14</td>
+                <td>Clinical Risk Score Distribution</td>
+                <td>Continuous Histogram</td>
+                <td>All Stakeholders</td>
+                <td>Normal vs right-skewed multi-morbidity distribution curve</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">15</td>
+                <td>Prevention &amp; Resource Allocation Matrix</td>
+                <td>Strategic Quadrant Grid</td>
+                <td>Leadership &amp; Policy</td>
+                <td>Triage tiers mapped against modifiable reversal potential</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

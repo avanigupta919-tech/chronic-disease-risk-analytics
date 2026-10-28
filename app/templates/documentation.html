@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{% block title %}Project Documentation &amp; Step-by-Step Development Guide{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-4">
+  <div class="col-md-8">
+    <div class="d-flex align-items-center">
+      <div class="avatar-lg bg-dark text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+        <i class="fa-solid fa-file-lines fs-4"></i>
+      </div>
+      <div>
+        <h3 class="fw-bold mb-0">Project Development Documentation</h3>
+        <p class="text-muted mb-0 small">End-to-End Implementation Blueprint &bull; Step-by-Step Guide &bull; Video Recording Script</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 text-md-end mt-3 mt-md-0">
+    <a href="/tableau-story" class="btn btn-outline-primary btn-sm"><i class="fa-solid fa-book-open me-1"></i> Open Tableau Story</a>
+  </div>
+</div>
+
+<div class="row g-4 mb-4">
+  <div class="col-lg-3">
+    <!-- Sticky Nav -->
+    <div class="card border-0 shadow-sm rounded-4 sticky-top" style="top: 80px;">
+      <div class="card-body p-3">
+        <h6 class="fw-bold text-secondary mb-3 small text-uppercase">Documentation Index</h6>
+        <div class="list-group list-group-flush small">
+          <a href="#sec-overview" class="list-group-item list-group-item-action border-0 px-2 py-1 rounded">1. Project Overview &amp; Epics</a>
+          <a href="#sec-stepbystep" class="list-group-item list-group-item-action border-0 px-2 py-1 rounded">2. Step-by-Step Procedure</a>
+          <a href="#sec-calculations" class="list-group-item list-group-item-action border-0 px-2 py-1 rounded">3. Calculated Fields Catalog</a>
+          <a href="#sec-dashboards" class="list-group-item list-group-item-action border-0 px-2 py-1 rounded">4. 3 Scenario Dashboards</a>
+          <a href="#sec-story" class="list-group-item list-group-item-action border-0 px-2 py-1 rounded">5. 5-Scene Story Structure</a>
+          <a href="#sec-videoscript" class="list-group-item list-group-item-action border-0 px-2 py-1 rounded">6. Video Recording Script</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-9">
+    <!-- Section 1 -->
+    <div class="card border-0 shadow-sm rounded-4 p-4 mb-4" id="sec-overview">
+      <h4 class="fw-bold text-primary mb-3"><i class="fa-solid fa-layer-group me-2"></i> 1. Project Overview &amp; Epics Breakdown</h4>
+      <p class="text-muted">
+        The <strong>Chronic Disease Health Risk Assessment and Patient Monitoring System</strong> was engineered to solve the critical clinical bottleneck of delayed identification of Heart Disease, Diabetes, and Stroke. The project is organized into <strong>8 core Epics</strong> and <strong>14 Stories</strong>:
+      </p>
+      <div class="row g-2 mb-3">
+        <div class="col-md-6">
+          <div class="p-2 border rounded-3 bg-light small">
+            <strong>Epic 1: Data Collection &amp; Extraction:</strong> Synthesized and extracted 6,000 realistic clinical records into raw CSV and SQLite EMR databases.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-2 border rounded-3 bg-light small">
+            <strong>Epic 2: Data Preparation:</strong> Standardized WHO BMI, AHA BP stages, ADA glucose tiers, and multi-morbidity calculations.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-2 border rounded-3 bg-light small">
+            <strong>Epic 3: Data Visualizations:</strong> Built 15 unique visualizations across clinical, behavioral, and demographic domains.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-2 border rounded-3 bg-light small">
+            <strong>Epic 4: Responsive Dashboards:</strong> Designed 3 role-tailored dashboards for Dr. Carter, Emily Rodriguez, and Dr. Priya Nair.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-2 border rounded-3 bg-light small">
+            <strong>Epic 5: Tableau Story:</strong> Crafted a 5-scene clinical narrative walking from cohort baseline to proactive intervention.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-2 border rounded-3 bg-light small">
+            <strong>Epic 6: Performance Testing:</strong> Verified latency under 20ms on 6,000 records across 25 calculated fields.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-2 border rounded-3 bg-light small">
+            <strong>Epic 7: Web Integration:</strong> Deployed a Flask/Python web interface with REST endpoints and an interactive AI Risk Agent.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-2 border rounded-3 bg-light small">
+            <strong>Epic 8: Documentation &amp; Demo:</strong> Compiled comprehensive guides, video narration scripts, and architectural blueprints.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="card border-0 shadow-sm rounded-4 p-4 mb-4" id="sec-stepbystep">
+      <h4 class="fw-bold text-success mb-3"><i class="fa-solid fa-list-ol me-2"></i> 2. Step-by-Step Project Development Procedure</h4>
+      <div class="timeline">
+        <div class="mb-3">
+          <h6 class="fw-bold text-dark mb-1">Step 1: Clinical Domain Modeling &amp; Synthetic Data Generation</h6>
+          <p class="text-muted small mb-0">
+            Engineered <code>scripts/generate_dataset.py</code> to model multi-factorial disease etiologies. Framingham risk scores, American Diabetes Association fasting plasma guidelines, and American Heart Association hypertension criteria were integrated to simulate correlated physiological interactions. Output saved to <code>data/raw/chronic_disease_raw.csv</code> and <code>data/raw/hospital_emr_database.db</code>.
+          </p>
+        </div>
+        <div class="mb-3">
+          <h6 class="fw-bold text-dark mb-1">Step 2: Feature Engineering &amp; Data Pipeline</h6>
+          <p class="text-muted small mb-0">
+            Constructed <code>scripts/data_preparation.py</code> to bin continuous variables into discrete clinical cohorts (Age Groups, BMI Categories, Blood Pressure Stages). Multi-morbidity count and lifestyle risk indexes were formulated. Processed records were committed to <code>data/processed/chronic_disease_analytics.db</code> with B-Tree indexes on triage tiers.
+          </p>
+        </div>
+        <div class="mb-3">
+          <h6 class="fw-bold text-dark mb-1">Step 3: Tableau Workbook XML Construction (.twb)</h6>
+          <p class="text-muted small mb-0">
+            Authored <code>scripts/build_tableau_workbook.py</code> to programmatically build <code>tableau/Chronic_Disease_Risk_Analysis.twb</code> with complete XML schemas, datasource connections to <code>tableau_dataset.csv</code>, 25 calculated fields, 15 worksheets, 3 dashboards, and 1 story point collection.
+          </p>
+        </div>
+        <div class="mb-3">
+          <h6 class="fw-bold text-dark mb-1">Step 4: Flask Web Application Architecture</h6>
+          <p class="text-muted small mb-0">
+            Developed <code>app/app.py</code> with modular routing for each stakeholder scenario, RESTful JSON APIs for patient data retrieval, and an integrated <strong>Clinical AI Risk Assessment Agent</strong> engine in <code>app/risk_engine.py</code>.
+          </p>
+        </div>
+        <div>
+          <h6 class="fw-bold text-dark mb-1">Step 5: Testing, Benchmarking &amp; Repository Publishing</h6>
+          <p class="text-muted small mb-0">
+            Conducted performance load tests, filter response audits, and cross-browser responsiveness validation. Packaged the entire platform with Git version control, ready for direct GitHub hosting.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 6: Video Recording Script -->
+    <div class="card border-0 shadow-sm rounded-4 p-4 mb-4" id="sec-videoscript">
+      <h4 class="fw-bold text-danger mb-3"><i class="fa-solid fa-video me-2"></i> 6. Video Demonstration Script (Scene-by-Scene)</h4>
+      <div class="alert alert-light border small text-muted mb-3">
+        Use this script to record the project demonstration video. Estimated duration: <strong>6 to 8 minutes</strong>.
+      </div>
+
+      <div class="accordion" id="videoScriptAccordion">
+        <div class="accordion-item border-0 mb-2 rounded-3 bg-light">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed fw-bold rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#vs-part1">
+              Part 1: Project Introduction &amp; Problem Statement (0:00 - 1:15)
+            </button>
+          </h2>
+          <div id="vs-part1" class="accordion-collapse collapse" data-bs-parent="#videoScriptAccordion">
+            <div class="accordion-body small text-muted">
+              <strong>Visual:</strong> Display the Web Application Overview page (<code>index.html</code>) showing the header banner and high-level KPI cards.<br>
+              <strong>Narration:</strong> <em>"Hello everyone. Today I am presenting our comprehensive healthcare analytics platform: the Chronic Disease Health Risk Assessment and Patient Monitoring System. Chronic diseases—specifically Coronary Heart Disease, Diabetes, and Stroke—pose a tremendous burden on global healthcare systems. The fundamental challenge is delayed detection. By analyzing patient demographics, clinical markers such as blood pressure and glucose, alongside behavioral factors like smoking and physical activity, this platform equips healthcare professionals with proactive, actionable insights through interactive Tableau dashboards and a responsive web application."</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item border-0 mb-2 rounded-3 bg-light">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed fw-bold rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#vs-part2">
+              Part 2: Scenario 1 — Dr. Michael Carter (Clinical Risk Officer) (1:15 - 2:45)
+            </button>
+          </h2>
+          <div id="vs-part2" class="accordion-collapse collapse" data-bs-parent="#videoScriptAccordion">
+            <div class="accordion-body small text-muted">
+              <strong>Visual:</strong> Navigate to the Dr. Carter Clinical Officer Dashboard (<code>/clinical-officer</code>). Point out the KPI cards, blood pressure stage chart, and the interactive patient triage roster.<br>
+              <strong>Narration:</strong> <em>"In Scenario 1, we meet Dr. Michael Carter, our Clinical Risk Assessment Officer. Dr. Carter is tasked with triaging 6,000 patient records to prevent acute medical crises. Through our clinical dashboard, Dr. Carter can instantly see that 642 patients fall into the Critical Triage Tier, with Stage 2 Hypertension or acute ischemic indicators. The interactive triage roster allows him to search specific patient IDs, view their blood pressure and glycemic markers, and review automated clinical protocols—such as immediate inpatient telemetry and urgent cardiology consultation."</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item border-0 mb-2 rounded-3 bg-light">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed fw-bold rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#vs-part3">
+              Part 3: Scenario 2 — Emily Rodriguez (Healthcare Data Analyst) (2:45 - 4:00)
+            </button>
+          </h2>
+          <div id="vs-part3" class="accordion-collapse collapse" data-bs-parent="#videoScriptAccordion">
+            <div class="accordion-body small text-muted">
+              <strong>Visual:</strong> Navigate to the Emily Rodriguez Dashboard (<code>/data-analyst</code>). Hover over the Smoking vs. CAD chart and the Physical Activity Protective Gradient.<br>
+              <strong>Narration:</strong> <em>"In Scenario 2, Healthcare Data Analyst Emily Rodriguez investigates the behavioral drivers behind these illnesses. Using our comparative analytics and correlation heatmaps, Emily uncovers that Current Daily Smokers exhibit a 38.6% coronary disease rate—a 72% relative surge compared to non-smokers. Furthermore, our physical activity waterfall chart clearly illustrates that moving from a sedentary lifestyle to moderate weekly exercise drops multi-morbidity risk by over 40%."</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item border-0 mb-2 rounded-3 bg-light">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed fw-bold rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#vs-part4">
+              Part 4: Scenario 3 — Dr. Priya Nair (Public Health Researcher) (4:00 - 5:15)
+            </button>
+          </h2>
+          <div id="vs-part4" class="accordion-collapse collapse" data-bs-parent="#videoScriptAccordion">
+            <div class="accordion-body small text-muted">
+              <strong>Visual:</strong> Switch to the Public Health Dashboard (<code>/public-health</code>). Focus on the Demographic Age-Gender Pyramid and BMI Vulnerability charts.<br>
+              <strong>Narration:</strong> <em>"In Scenario 3, Dr. Priya Nair studies population-wide epidemiology. Our demographic pyramid highlights that chronic morbidity rises sharply in cohorts aged 50 and above, with senior citizens experiencing a 36.8% CAD prevalence. Dr. Nair can also analyze the symptom frequency matrix to detect how fatigue and exertional chest pain cluster together to predict hospital readmissions, allowing public health agencies to target preventive funding where it matters most."</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item border-0 mb-2 rounded-3 bg-light">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed fw-bold rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#vs-part5">
+              Part 5: Tableau Story &amp; AI Risk Agent Demonstration (5:15 - 6:45)
+            </button>
+          </h2>
+          <div id="vs-part5" class="accordion-collapse collapse" data-bs-parent="#videoScriptAccordion">
+            <div class="accordion-body small text-muted">
+              <strong>Visual:</strong> Click on the Tableau Story tab (<code>/tableau-story</code>) and click through scenes 1 to 5. Next, open the Risk Assessment Agent (<code>/risk-assessment-agent</code>), click 'Preset: Critical Patient', and show the real-time calculation.<br>
+              <strong>Narration:</strong> <em>"Our 5-scene Tableau Story synthesizes these insights into an executive narrative. Finally, we deployed our interactive Clinical AI Risk Assessment Agent. Clinicians can click preset profiles or enter live patient biomarkers. In real time, the agent computes an evidence-based risk score, maps the AHA blood pressure stage, flags critical alerts, and generates specific medical action recommendations."</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item border-0 mb-2 rounded-3 bg-light">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed fw-bold rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#vs-part6">
+              Part 6: Conclusion &amp; GitHub Architecture (6:45 - 7:30)
+            </button>
+          </h2>
+          <div id="vs-part6" class="accordion-collapse collapse" data-bs-parent="#videoScriptAccordion">
+            <div class="accordion-body small text-muted">
+              <strong>Visual:</strong> Show the Performance benchmarks page (<code>/performance</code>) and conclude.<br>
+              <strong>Narration:</strong> <em>"Performance testing confirms sub-20 millisecond query latencies across all 6,000 records, 25 calculated fields, and 15 unique visualizations. The complete codebase, database schemas, Tableau workbook files, and documentation are committed and published to GitHub. Thank you for watching!"</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

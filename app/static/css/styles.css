@@ -1,0 +1,96 @@
+/* HealthPulse AI Custom Healthcare Stylesheet */
+:root {
+  --primary-color: #0284c7;
+  --primary-dark: #0369a1;
+  --secondary-color: #475569;
+  --danger-color: #dc2626;
+  --warning-color: #d97706;
+  --success-color: #16a34a;
+  --info-color: #0891b2;
+  --card-bg: #ffffff;
+  --body-bg: #f8fafc;
+}
+
+body {
+  background-color: var(--body-bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #1e293b;
+}
+
+.kpi-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 1rem;
+}
+
+.kpi-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04) !important;
+}
+
+.icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.transition-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.transition-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.nav-pills .nav-link {
+  border-radius: 0.75rem;
+  color: #475569;
+  transition: all 0.2s ease;
+}
+
+.nav-pills .nav-link.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.table th {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #64748b;
+  border-top: none;
+}
+
+.table td {
+  font-size: 0.88rem;
+  vertical-align: middle;
+}
+
+/* Custom Badges */
+.badge-critical {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #f87171;
+}
+
+.badge-high {
+  background-color: #ffedd5;
+  color: #9a3412;
+  border: 1px solid #fb923c;
+}
+
+.badge-moderate {
+  background-color: #fef9c3;
+  color: #854d0e;
+  border: 1px solid #facc15;
+}
+
+.badge-low {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #4ade80;
+}

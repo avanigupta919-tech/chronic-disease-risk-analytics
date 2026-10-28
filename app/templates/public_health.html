@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% block title %}Dr. Priya Nair — Public Health Researcher Dashboard{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-4">
+  <div class="col-md-8">
+    <div class="d-flex align-items-center">
+      <div class="avatar-lg bg-info text-dark rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+        <i class="fa-solid fa-users fs-4"></i>
+      </div>
+      <div>
+        <h3 class="fw-bold mb-0">Population Demographic Epidemiology</h3>
+        <p class="text-muted mb-0 small"><strong>Scenario 3: Dr. Priya Nair</strong> &bull; Cohort Distributions &bull; Vulnerable Demographic Segments &bull; Symptom Clustering</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 text-md-end mt-3 mt-md-0">
+    <span class="badge bg-info text-dark p-2 px-3 fw-bold"><i class="fa-solid fa-globe me-1"></i> Public Health Surveillance Active</span>
+  </div>
+</div>
+
+<!-- Public Health KPI Row -->
+<div class="row g-3 mb-4">
+  <div class="col-md-6 col-lg-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 border-start border-danger border-4">
+      <div class="card-body">
+        <div class="text-muted small text-uppercase fw-bold">Senior Cohort (65+) CAD Rate</div>
+        <h2 class="fw-bold text-danger mb-0">36.8%</h2>
+        <small class="text-muted">High-priority vaccination &amp; telemetry</small>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 border-start border-warning border-4">
+      <div class="card-body">
+        <div class="text-muted small text-uppercase fw-bold">Obese Class II/III Prevalence</div>
+        <h2 class="fw-bold text-warning-emphasis mb-0">18.4%</h2>
+        <small class="text-muted">1,104 patients in severe obesity tier</small>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 border-start border-info border-4">
+      <div class="card-body">
+        <div class="text-muted small text-uppercase fw-bold">Chronic Fatigue Co-occurrence</div>
+        <h2 class="fw-bold text-info-emphasis mb-0">28.2%</h2>
+        <small class="text-muted">Clustered with uncontrolled diabetes</small>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 border-start border-primary border-4">
+      <div class="card-body">
+        <div class="text-muted small text-uppercase fw-bold">Prevention Opportunity</div>
+        <h2 class="fw-bold text-primary mb-0">2,410</h2>
+        <small class="text-muted">Moderate risk patients eligible for lifestyle reversal</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Public Health Visualizations -->
+<div class="row g-4 mb-4">
+  <!-- Chart 1: Demographic Age Group & Gender Pyramid -->
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm rounded-4 h-100">
+      <div class="card-header bg-white border-0 pt-3 px-4 d-flex justify-content-between align-items-center">
+        <h6 class="fw-bold mb-0 text-secondary"><i class="fa-solid fa-venus-mars me-2 text-primary"></i> Demographic Cohort Risk Breakdown (Age &amp; Gender)</h6>
+        <span class="badge bg-light text-dark border">Epidemiology</span>
+      </div>
+      <div class="card-body px-4">
+        <canvas id="chart-demographic-pyramid" height="240"></canvas>
+      </div>
+      <div class="card-footer bg-light border-0 small text-muted py-2 px-4 rounded-bottom-4">
+        <i class="fa-solid fa-chart-simple me-1"></i> Chronic disease prevalence escalates sharply from 9.2% in under-35s to 42.1% in the 65+ demographic.
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart 2: BMI Vulnerability Gradients -->
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm rounded-4 h-100">
+      <div class="card-header bg-white border-0 pt-3 px-4 d-flex justify-content-between align-items-center">
+        <h6 class="fw-bold mb-0 text-secondary"><i class="fa-solid fa-weight-scale me-2 text-warning"></i> Chronic Disease Prevalence Across BMI Categories</h6>
+        <span class="badge bg-light text-dark border">WHO Classifications</span>
+      </div>
+      <div class="card-body px-4">
+        <canvas id="chart-bmi-vulnerability" height="240"></canvas>
+      </div>
+      <div class="card-footer bg-light border-0 small text-muted py-2 px-4 rounded-bottom-4">
+        <i class="fa-solid fa-triangle-exclamation text-warning me-1"></i> Patients in Obesity Class II/III carry a 3.8x higher risk of multi-morbidity compared to Normal Weight.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4 mb-4">
+  <!-- Chart 3: Symptom Frequency Matrix -->
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm rounded-4 h-100">
+      <div class="card-header bg-white border-0 pt-3 px-4 d-flex justify-content-between align-items-center">
+        <h6 class="fw-bold mb-0 text-secondary"><i class="fa-solid fa-head-side-virus me-2 text-danger"></i> Symptom Frequency Patterns (Chest Pain, Fatigue, Dizziness)</h6>
+        <span class="badge bg-light text-dark border">Symptomatology</span>
+      </div>
+      <div class="card-body px-4">
+        <canvas id="chart-symptom-patterns" height="240"></canvas>
+      </div>
+      <div class="card-footer bg-light border-0 small text-muted py-2 px-4 rounded-bottom-4">
+        <i class="fa-solid fa-info-circle me-1"></i> Typical Angina chest pain co-occurs with confirmed CAD in 88.5% of cases.
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart 4: Prevention Intervention Tiers -->
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm rounded-4 h-100">
+      <div class="card-header bg-white border-0 pt-3 px-4 d-flex justify-content-between align-items-center">
+        <h6 class="fw-bold mb-0 text-secondary"><i class="fa-solid fa-hand-holding-medical me-2 text-success"></i> Preventive Care &amp; Health Policy Resource Allocation</h6>
+        <span class="badge bg-light text-dark border">Policy Target</span>
+      </div>
+      <div class="card-body px-4">
+        <canvas id="chart-policy-allocation" height="240"></canvas>
+      </div>
+      <div class="card-footer bg-light border-0 small text-muted py-2 px-4 rounded-bottom-4">
+        <i class="fa-solid fa-bullseye text-success me-1"></i> Targeting the 2,410 Moderate Risk patients with community nutrition programs saves an estimated $14.2M in hospitalizations.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tableau Integration Card -->
+<div class="row g-4">
+  <div class="col-12">
+    <div class="card border-0 shadow-sm rounded-4">
+      <div class="card-header bg-white border-0 pt-4 px-4 d-flex justify-content-between align-items-center">
+        <div>
+          <h5 class="fw-bold mb-1"><i class="fa-solid fa-users me-2 text-info"></i> Scenario 3: Tableau Workbook Direct Integration</h5>
+          <small class="text-muted">Workbook: <code>Chronic_Disease_Risk_Analysis.twb</code> &bull; Sheet: <code>Dashboard_Public_Health_Researcher</code></small>
+        </div>
+        <span class="badge bg-success-subtle text-success border border-success">Tableau 2024.1 Ready</span>
+      </div>
+      <div class="card-body px-4 py-3">
+        <div class="p-4 bg-light rounded-4 border text-center">
+          <p class="mb-2 fw-semibold text-secondary">Tableau Workbook Connection Path:</p>
+          <code class="d-inline-block bg-white px-3 py-2 rounded border small mb-3">tableau/Chronic_Disease_Risk_Analysis.twb -> Sheet: Dashboard_Public_Health_Researcher</code>
+          <p class="text-muted small mb-0">
+            Assists Dr. Priya Nair in compiling evidence-based public health white papers, regional health grants, and vulnerable cohort outreach campaigns.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

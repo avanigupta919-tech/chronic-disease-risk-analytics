@@ -1,0 +1,304 @@
+{% extends "base.html" %}
+{% block title %}Executive Overview — Chronic Disease Risk Platform{% endblock %}
+
+{% block content %}
+<div class="row g-4 mb-4">
+  <div class="col-12">
+    <div class="card border-0 shadow-sm bg-gradient-primary text-white p-4 rounded-4" style="background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%);">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <span class="badge bg-warning text-dark mb-2 px-3 py-1 fw-bold text-uppercase">Production Ready Analytics</span>
+          <h1 class="display-6 fw-bold mb-2">Chronic Disease Health Risk Assessment &amp; Monitoring Platform</h1>
+          <p class="lead mb-3 text-light opacity-90">
+            A unified clinical decision-support ecosystem integrating <strong>Tableau Business Intelligence</strong>, predictive risk stratification, and a <strong>Flask Web Framework</strong> for early identification and monitoring of Heart Disease, Diabetes, and Stroke.
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="/clinical-officer" class="btn btn-light text-primary fw-semibold"><i class="fa-solid fa-user-doctor me-1"></i> Dr. Michael Carter (Clinical)</a>
+            <a href="/data-analyst" class="btn btn-outline-light fw-semibold"><i class="fa-solid fa-chart-line me-1"></i> Emily Rodriguez (Lifestyle)</a>
+            <a href="/public-health" class="btn btn-outline-light fw-semibold"><i class="fa-solid fa-users me-1"></i> Dr. Priya Nair (Public Health)</a>
+            <a href="/risk-assessment-agent" class="btn btn-warning text-dark fw-bold"><i class="fa-solid fa-robot me-1"></i> Launch Risk Agent</a>
+          </div>
+        </div>
+        <div class="col-lg-4 text-center d-none d-lg-block">
+          <div class="bg-white text-dark p-3 rounded-4 shadow-lg text-start">
+            <h6 class="fw-bold text-primary mb-2"><i class="fa-solid fa-list-check me-1"></i> Project Status &amp; Metrics</h6>
+            <div class="d-flex justify-content-between border-bottom py-1 small">
+              <span class="text-muted">Total Epics</span>
+              <span class="fw-bold badge bg-primary">8 Epics</span>
+            </div>
+            <div class="d-flex justify-content-between border-bottom py-1 small">
+              <span class="text-muted">Total Tasks</span>
+              <span class="fw-bold badge bg-info text-dark">14 Tasks</span>
+            </div>
+            <div class="d-flex justify-content-between border-bottom py-1 small">
+              <span class="text-muted">Total Patient Records</span>
+              <span class="fw-bold">6,000 Cohort</span>
+            </div>
+            <div class="d-flex justify-content-between border-bottom py-1 small">
+              <span class="text-muted">Tableau Calculated Fields</span>
+              <span class="fw-bold">25 Formulas</span>
+            </div>
+            <div class="d-flex justify-content-between pt-1 small">
+              <span class="text-muted">Unique Visualizations</span>
+              <span class="fw-bold text-success">15 Visualizations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- High Level KPI Cards -->
+<div class="row g-3 mb-4">
+  <div class="col-md-6 col-xl-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 kpi-card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="text-muted text-uppercase fw-semibold small">Total Cohort</span>
+          <div class="icon-circle bg-primary-subtle text-primary">
+            <i class="fa-solid fa-hospital-user"></i>
+          </div>
+        </div>
+        <h2 class="fw-bold mb-1" id="kpi-total-patients">6,000</h2>
+        <div class="small text-muted">Active patient clinical records</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 kpi-card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="text-muted text-uppercase fw-semibold small">High / Critical Risk</span>
+          <div class="icon-circle bg-danger-subtle text-danger">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+        </div>
+        <h2 class="fw-bold text-danger mb-1" id="kpi-high-risk">1,624</h2>
+        <div class="small text-danger fw-semibold">27.1% require urgent triage</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 kpi-card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="text-muted text-uppercase fw-semibold small">Heart Disease Prevalence</span>
+          <div class="icon-circle bg-warning-subtle text-warning">
+            <i class="fa-solid fa-heart-pulse"></i>
+          </div>
+        </div>
+        <h2 class="fw-bold mb-1" id="kpi-heart-disease">22.4%</h2>
+        <div class="small text-muted">1,344 diagnosed CAD cases</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 kpi-card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="text-muted text-uppercase fw-semibold small">Diabetes Mellitus</span>
+          <div class="icon-circle bg-info-subtle text-info">
+            <i class="fa-solid fa-droplet"></i>
+          </div>
+        </div>
+        <h2 class="fw-bold mb-1" id="kpi-diabetes">19.8%</h2>
+        <div class="small text-muted">1,188 confirmed Type 2 cases</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3 Personas / Clinical Scenarios -->
+<div class="row g-4 mb-4">
+  <div class="col-12">
+    <h4 class="fw-bold text-secondary mb-3"><i class="fa-solid fa-user-gear me-2"></i> Role-Based Healthcare Perspectives</h4>
+  </div>
+
+  <!-- Persona 1 -->
+  <div class="col-lg-4">
+    <div class="card border-0 shadow-sm rounded-4 h-100 transition-hover">
+      <div class="card-body p-4 d-flex flex-column">
+        <div class="d-flex align-items-center mb-3">
+          <div class="avatar-lg bg-primary text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 52px; height: 52px;">
+            <i class="fa-solid fa-user-doctor fs-4"></i>
+          </div>
+          <div>
+            <h5 class="fw-bold mb-0">Dr. Michael Carter</h5>
+            <small class="text-primary fw-semibold">Clinical Risk Assessment Officer</small>
+          </div>
+        </div>
+        <p class="text-muted small flex-grow-1">
+          Faces the challenge of identifying high-risk patients at an early stage. Delayed identification of conditions like Heart disease, Diabetes, and Stroke leads to severe health complications and high treatment costs.
+        </p>
+        <div class="bg-light p-3 rounded-3 mb-3">
+          <span class="d-block small fw-bold text-secondary mb-1">Key Tableau Capabilities:</span>
+          <ul class="mb-0 small text-muted ps-3">
+            <li>Interactive BMI &amp; BP stage matrix</li>
+            <li>Real-time critical patient triage roster</li>
+            <li>Hypertensive crisis early-warning alerts</li>
+          </ul>
+        </div>
+        <a href="/clinical-officer" class="btn btn-outline-primary w-100 fw-semibold">
+          Open Clinical Dashboard <i class="fa-solid fa-arrow-right ms-1"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persona 2 -->
+  <div class="col-lg-4">
+    <div class="card border-0 shadow-sm rounded-4 h-100 transition-hover">
+      <div class="card-body p-4 d-flex flex-column">
+        <div class="d-flex align-items-center mb-3">
+          <div class="avatar-lg bg-success text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 52px; height: 52px;">
+            <i class="fa-solid fa-chart-pie fs-4"></i>
+          </div>
+          <div>
+            <h5 class="fw-bold mb-0">Emily Rodriguez</h5>
+            <small class="text-success fw-semibold">Healthcare Data Analyst</small>
+          </div>
+        </div>
+        <p class="text-muted small flex-grow-1">
+          Faces the challenge of understanding how lifestyle behaviors influence disease occurrence across patient groups. Manual analysis fails to isolate correlations between smoking, alcohol, exercise, and chronic diseases.
+        </p>
+        <div class="bg-light p-3 rounded-3 mb-3">
+          <span class="d-block small fw-bold text-secondary mb-1">Key Tableau Capabilities:</span>
+          <ul class="mb-0 small text-muted ps-3">
+            <li>Smoking vs CAD correlation heatmap</li>
+            <li>Sedentary lifestyle risk gradients</li>
+            <li>Alcohol consumption vs Stroke rate</li>
+          </ul>
+        </div>
+        <a href="/data-analyst" class="btn btn-outline-success w-100 fw-semibold">
+          Open Lifestyle Analytics <i class="fa-solid fa-arrow-right ms-1"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Persona 3 -->
+  <div class="col-lg-4">
+    <div class="card border-0 shadow-sm rounded-4 h-100 transition-hover">
+      <div class="card-body p-4 d-flex flex-column">
+        <div class="d-flex align-items-center mb-3">
+          <div class="avatar-lg bg-info text-dark rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 52px; height: 52px;">
+            <i class="fa-solid fa-users fs-4"></i>
+          </div>
+          <div>
+            <h5 class="fw-bold mb-0">Dr. Priya Nair</h5>
+            <small class="text-info fw-semibold">Public Health Researcher</small>
+          </div>
+        </div>
+        <p class="text-muted small flex-grow-1">
+          Studies population-wide disease patterns and major contributing risk factors. Without proper visualization, demographic variations and behavioral impacts across cohorts remain opaque.
+        </p>
+        <div class="bg-light p-3 rounded-3 mb-3">
+          <span class="d-block small fw-bold text-secondary mb-1">Key Tableau Capabilities:</span>
+          <ul class="mb-0 small text-muted ps-3">
+            <li>Age-group &amp; gender demographic pyramids</li>
+            <li>BMI category vulnerability distribution</li>
+            <li>Symptom co-occurrence matrices</li>
+          </ul>
+        </div>
+        <a href="/public-health" class="btn btn-outline-info w-100 fw-semibold">
+          Open Population Health <i class="fa-solid fa-arrow-right ms-1"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Project Epics & Implementation Scope -->
+<div class="row g-4">
+  <div class="col-lg-8">
+    <div class="card border-0 shadow-sm rounded-4 h-100">
+      <div class="card-body p-4">
+        <h5 class="fw-bold mb-3"><i class="fa-solid fa-cubes me-2 text-primary"></i> Project Epics Architecture (Total: 8 Epics)</h5>
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th>Epic ID</th>
+                <th>Epic Title &amp; Scope</th>
+                <th>Status</th>
+                <th>Artifacts Delivered</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge bg-secondary">EPIC-01</span></td>
+                <td><strong>Data Collection &amp; Extraction</strong><br><small class="text-muted">EMR Database ingestion, synthetic generation of 6,000 patient records</small></td>
+                <td><span class="badge bg-success">Completed</span></td>
+                <td><small>hospital_emr_database.db, chronic_disease_raw.csv</small></td>
+              </tr>
+              <tr>
+                <td><span class="badge bg-secondary">EPIC-02</span></td>
+                <td><strong>Data Preparation &amp; Feature Engineering</strong><br><small class="text-muted">AHA BP bins, ADA glucose tiers, WHO BMI classes, lifestyle scores</small></td>
+                <td><span class="badge bg-success">Completed</span></td>
+                <td><small>chronic_disease_cleaned.csv, SQLite indexes</small></td>
+              </tr>
+              <tr>
+                <td><span class="badge bg-secondary">EPIC-03</span></td>
+                <td><strong>Data Visualizations Design</strong><br><small class="text-muted">15 Unique visualizations across clinical, behavioral, and demographic domains</small></td>
+                <td><span class="badge bg-success">Completed</span></td>
+                <td><small>15 Worksheet specs, Chart.js native charts</small></td>
+              </tr>
+              <tr>
+                <td><span class="badge bg-secondary">EPIC-04</span></td>
+                <td><strong>Responsive Scenario Dashboards</strong><br><small class="text-muted">Dr. Carter Clinical Triage, Emily Rodriguez Lifestyle, Dr. Priya Nair Epidemiology</small></td>
+                <td><span class="badge bg-success">Completed</span></td>
+                <td><small>3 Custom Tableau &amp; Web Dashboards</small></td>
+              </tr>
+              <tr>
+                <td><span class="badge bg-secondary">EPIC-05</span></td>
+                <td><strong>Tableau Story Development</strong><br><small class="text-muted">5-Scene interactive clinical narrative with progression from risk to strategy</small></td>
+                <td><span class="badge bg-success">Completed</span></td>
+                <td><small>Chronic_Disease_Strategic_Story (5 Scenes)</small></td>
+              </tr>
+              <tr>
+                <td><span class="badge bg-secondary">EPIC-06</span></td>
+                <td><strong>Performance Testing &amp; Benchmarking</strong><br><small class="text-muted">6,000 rows benchmark, 25 calculated fields catalog, filter stress testing</small></td>
+                <td><span class="badge bg-success">Completed</span></td>
+                <td><small>PERFORMANCE_TESTING_REPORT.md</small></td>
+              </tr>
+              <tr>
+                <td><span class="badge bg-secondary">EPIC-07</span></td>
+                <td><strong>Web Integration with Flask</strong><br><small class="text-muted">Flask REST APIs, responsive templates, embedded views, Interactive AI Agent</small></td>
+                <td><span class="badge bg-success">Completed</span></td>
+                <td><small>app.py, risk_engine.py, REST endpoints</small></td>
+              </tr>
+              <tr>
+                <td><span class="badge bg-secondary">EPIC-08</span></td>
+                <td><strong>Demonstration &amp; Documentation</strong><br><small class="text-muted">End-to-end development guide, architecture specs, video recording script</small></td>
+                <td><span class="badge bg-success">Completed</span></td>
+                <td><small>STEP_BY_STEP_DEVELOPMENT_GUIDE.md</small></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div class="card border-0 shadow-sm rounded-4 h-100">
+      <div class="card-body p-4 d-flex flex-column">
+        <h5 class="fw-bold mb-3"><i class="fa-solid fa-brain me-2 text-warning"></i> Clinical AI Risk Agent</h5>
+        <p class="text-muted small">
+          In addition to static visualization, this platform includes a live <strong>Interactive Patient Risk Assessment Agent</strong>. Doctors can input a patient's clinical markers and lifestyle habits to receive instant triage classification, cardiovascular risk odds, and custom treatment protocols.
+        </p>
+        <div class="bg-warning-subtle text-warning-emphasis p-3 rounded-3 mb-3 small">
+          <i class="fa-solid fa-lightbulb me-1"></i> <strong>Real-time Decision Support:</strong>
+          Empowers Dr. Carter to assess incoming walk-in patients in under 10 seconds.
+        </div>
+        <div class="mt-auto">
+          <a href="/risk-assessment-agent" class="btn btn-warning text-dark fw-bold w-100">
+            <i class="fa-solid fa-calculator me-1"></i> Test Risk Calculator Agent
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,460 @@
+{% extends "base.html" %}
+{% block title %}Interactive Patient Risk Assessment Agent{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-4">
+  <div class="col-md-8">
+    <div class="d-flex align-items-center">
+      <div class="avatar-lg bg-warning text-dark rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+        <i class="fa-solid fa-robot fs-4"></i>
+      </div>
+      <div>
+        <h3 class="fw-bold mb-0">Clinical AI Patient Risk Assessment Agent</h3>
+        <p class="text-muted mb-0 small">Real-Time Clinical Decision Support &bull; Multi-factorial Risk Prediction &bull; Instant Triage Classification</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 text-md-end mt-3 mt-md-0">
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-sm btn-outline-danger" onclick="loadPreset('critical')"><i class="fa-solid fa-triangle-exclamation me-1"></i> Preset: Critical Patient</button>
+      <button type="button" class="btn btn-sm btn-outline-warning" onclick="loadPreset('moderate')"><i class="fa-solid fa-user-clock me-1"></i> Preset: Moderate</button>
+      <button type="button" class="btn btn-sm btn-outline-success" onclick="loadPreset('healthy')"><i class="fa-solid fa-shield-heart me-1"></i> Preset: Low Risk</button>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4">
+  <!-- Left Column: Patient Intake Form -->
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm rounded-4 h-100">
+      <div class="card-header bg-white border-0 pt-4 px-4 pb-2">
+        <h5 class="fw-bold mb-1"><i class="fa-solid fa-notes-medical me-2 text-primary"></i> Patient Clinical &amp; Lifestyle Intake</h5>
+        <small class="text-muted">Enter patient vital indicators and reported behaviors for predictive stratification</small>
+      </div>
+      <div class="card-body px-4">
+        <form id="risk-agent-form">
+          <!-- Demographic Section -->
+          <div class="mb-3">
+            <span class="text-uppercase small fw-bold text-secondary d-block mb-2"><i class="fa-solid fa-id-card me-1"></i> 1. Demographics</span>
+            <div class="row g-2">
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Patient Age (Years)</label>
+                <input type="number" class="form-control" id="form-age" value="58" min="18" max="100" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Biological Gender</label>
+                <select class="form-select" id="form-gender">
+                  <option value="Male" selected>Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hemodynamic & Clinical Section -->
+          <div class="mb-3">
+            <span class="text-uppercase small fw-bold text-secondary d-block mb-2"><i class="fa-solid fa-heart-pulse me-1"></i> 2. Clinical Biomarkers</span>
+            <div class="row g-2">
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Systolic BP (mmHg)</label>
+                <input type="number" class="form-control" id="form-sbp" value="152" min="80" max="240" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Diastolic BP (mmHg)</label>
+                <input type="number" class="form-control" id="form-dbp" value="94" min="50" max="140" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Total Cholesterol (mg/dL)</label>
+                <input type="number" class="form-control" id="form-chol" value="245" min="100" max="400" required>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Fasting Glucose (mg/dL)</label>
+                <input type="number" class="form-control" id="form-glucose" value="138" min="50" max="350" required>
+              </div>
+              <div class="col-12">
+                <label class="form-label small fw-semibold">Body Mass Index (BMI)</label>
+                <input type="number" step="0.1" class="form-control" id="form-bmi" value="31.2" min="15.0" max="50.0" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lifestyle Behaviors -->
+          <div class="mb-3">
+            <span class="text-uppercase small fw-bold text-secondary d-block mb-2"><i class="fa-solid fa-person-walking me-1"></i> 3. Lifestyle Behaviors</span>
+            <div class="row g-2">
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Smoking Habit</label>
+                <select class="form-select" id="form-smoking">
+                  <option value="Never">Never Smoked</option>
+                  <option value="Former">Former Smoker</option>
+                  <option value="Current Occasional">Current Occasional</option>
+                  <option value="Current Daily" selected>Current Daily</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Alcohol Consumption</label>
+                <select class="form-select" id="form-alcohol">
+                  <option value="None">None</option>
+                  <option value="Low">Low (&lt; 3 drinks/wk)</option>
+                  <option value="Moderate" selected>Moderate (3-7 drinks/wk)</option>
+                  <option value="Heavy">Heavy (&gt; 7 drinks/wk)</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Physical Exercise</label>
+                <select class="form-select" id="form-exercise">
+                  <option value="Sedentary" selected>Sedentary (No exercise)</option>
+                  <option value="Light">Light (1-2 days/wk)</option>
+                  <option value="Moderate">Moderate (3-4 days/wk)</option>
+                  <option value="Vigorous">Vigorous (5+ days/wk)</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label class="form-label small fw-semibold">Diet Quality</label>
+                <select class="form-select" id="form-diet">
+                  <option value="Poor" selected>Poor (High sodium/sugar)</option>
+                  <option value="Average">Average / Mixed</option>
+                  <option value="Healthy">Healthy (Heart-healthy/Med.)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Symptoms Manifestation -->
+          <div class="mb-4">
+            <span class="text-uppercase small fw-bold text-secondary d-block mb-2"><i class="fa-solid fa-head-side-virus me-1"></i> 4. Reported Symptoms</span>
+            <div class="row g-2">
+              <div class="col-4">
+                <label class="form-label small fw-semibold">Chest Pain</label>
+                <select class="form-select" id="form-chest-pain">
+                  <option value="None">None</option>
+                  <option value="Atypical">Atypical</option>
+                  <option value="Exertional / Discomfort" selected>Exertional</option>
+                  <option value="Typical Angina / Severe">Typical Angina</option>
+                </select>
+              </div>
+              <div class="col-4">
+                <label class="form-label small fw-semibold">Fatigue</label>
+                <select class="form-select" id="form-fatigue">
+                  <option value="None">None</option>
+                  <option value="Mild">Mild</option>
+                  <option value="Frequent" selected>Frequent</option>
+                  <option value="Chronic/Severe">Chronic</option>
+                </select>
+              </div>
+              <div class="col-4">
+                <label class="form-label small fw-semibold">Dizziness</label>
+                <select class="form-select" id="form-dizziness">
+                  <option value="None">None</option>
+                  <option value="Occasional" selected>Occasional</option>
+                  <option value="Positional">Positional</option>
+                  <option value="Frequent/Persistent">Persistent</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-warning text-dark fw-bold w-100 py-2 shadow-sm">
+            <i class="fa-solid fa-bolt me-2"></i> Compute Multi-Factorial Clinical Assessment
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Column: Agent Risk Diagnosis & Protocol -->
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm rounded-4 h-100" id="assessment-result-card">
+      <div class="card-header bg-white border-0 pt-4 px-4 pb-2 d-flex justify-content-between align-items-center">
+        <div>
+          <h5 class="fw-bold mb-1"><i class="fa-solid fa-chart-pie me-2 text-warning"></i> Clinical Stratification Output</h5>
+          <small class="text-muted">AHA/Framingham/ADA guideline-aligned prediction</small>
+        </div>
+        <span class="badge bg-danger fs-6 px-3 py-2" id="res-triage-badge">High Risk</span>
+      </div>
+      <div class="card-body px-4">
+        <!-- Score Bar -->
+        <div class="mb-4 text-center p-3 bg-light rounded-4">
+          <small class="text-uppercase fw-bold text-muted d-block mb-1">Composite Clinical Risk Score</small>
+          <div class="display-4 fw-bold text-danger mb-2" id="res-risk-score">76.4 <small class="fs-5 text-muted">/ 100</small></div>
+          <div class="progress" style="height: 12px;">
+            <div class="progress-bar bg-danger" id="res-progress-bar" role="progressbar" style="width: 76.4%;"></div>
+          </div>
+          <div class="d-flex justify-content-between text-muted small mt-1">
+            <span>Low (0-34)</span>
+            <span>Moderate (35-54)</span>
+            <span>High (55-74)</span>
+            <span class="text-danger fw-bold">Critical (75+)</span>
+          </div>
+        </div>
+
+        <!-- Disease Event Odds Breakdown -->
+        <h6 class="fw-bold text-secondary mb-2"><i class="fa-solid fa-disease me-1"></i> Individual Disease Event Probabilities</h6>
+        <div class="row g-2 mb-4">
+          <div class="col-4">
+            <div class="p-2 border rounded-3 text-center">
+              <small class="text-muted d-block">Coronary CAD</small>
+              <span class="fw-bold fs-5 text-danger" id="res-cad-risk">78.5%</span>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="p-2 border rounded-3 text-center">
+              <small class="text-muted d-block">Type 2 Diabetes</small>
+              <span class="fw-bold fs-5 text-warning-emphasis" id="res-diabetes-risk">72.0%</span>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="p-2 border rounded-3 text-center">
+              <small class="text-muted d-block">Stroke Vulnerability</small>
+              <span class="fw-bold fs-5 text-info-emphasis" id="res-stroke-risk">54.2%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diagnostic Classifications -->
+        <div class="p-3 bg-light rounded-3 mb-3 small">
+          <div class="d-flex justify-content-between mb-1">
+            <span class="text-muted">AHA Blood Pressure Tier:</span>
+            <strong id="res-bp-stage" class="text-danger">Stage 2 Hypertension</strong>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="text-muted">WHO BMI Classification:</span>
+            <strong id="res-bmi-tier" class="text-warning-emphasis">Class I Obesity (31.2)</strong>
+          </div>
+        </div>
+
+        <!-- Urgent Alerts -->
+        <div class="mb-3" id="res-alerts-container">
+          <div class="alert alert-danger py-2 small mb-1">
+            <i class="fa-solid fa-triangle-exclamation me-1"></i> <strong>ALERT:</strong> Hypertension Stage 2 detected (152/94 mmHg).
+          </div>
+          <div class="alert alert-warning py-2 small mb-1">
+            <i class="fa-solid fa-triangle-exclamation me-1"></i> <strong>ALERT:</strong> Hyperglycemia in diabetic diagnostic range (138 mg/dL).
+          </div>
+        </div>
+
+        <!-- Actionable Recommendations -->
+        <h6 class="fw-bold text-secondary mb-2"><i class="fa-solid fa-list-check me-1"></i> Clinical Protocol Recommendations</h6>
+        <ul class="list-group list-group-flush small" id="res-recommendations-list">
+          <li class="list-group-item px-0 py-1 text-muted"><i class="fa-solid fa-check text-success me-2"></i> Specialist cardiology and endocrinology referral within 5 to 7 days.</li>
+          <li class="list-group-item px-0 py-1 text-muted"><i class="fa-solid fa-check text-success me-2"></i> 24-hour ambulatory blood pressure monitoring (ABPM) assessment.</li>
+          <li class="list-group-item px-0 py-1 text-muted"><i class="fa-solid fa-check text-success me-2"></i> Immediate enrollment in hospital structured smoking cessation program.</li>
+          <li class="list-group-item px-0 py-1 text-muted"><i class="fa-solid fa-check text-success me-2"></i> Initiate low-sodium Mediterranean nutritional therapy protocol.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function loadPreset(type) {
+  if (type === 'critical') {
+    document.getElementById('form-age').value = 68;
+    document.getElementById('form-gender').value = 'Male';
+    document.getElementById('form-sbp').value = 178;
+    document.getElementById('form-dbp').value = 104;
+    document.getElementById('form-chol').value = 280;
+    document.getElementById('form-glucose').value = 210;
+    document.getElementById('form-bmi').value = 35.5;
+    document.getElementById('form-smoking').value = 'Current Daily';
+    document.getElementById('form-alcohol').value = 'Heavy';
+    document.getElementById('form-exercise').value = 'Sedentary';
+    document.getElementById('form-diet').value = 'Poor';
+    document.getElementById('form-chest-pain').value = 'Typical Angina / Severe';
+    document.getElementById('form-fatigue').value = 'Chronic/Severe';
+    document.getElementById('form-dizziness').value = 'Frequent/Persistent';
+  } else if (type === 'moderate') {
+    document.getElementById('form-age').value = 52;
+    document.getElementById('form-gender').value = 'Female';
+    document.getElementById('form-sbp').value = 136;
+    document.getElementById('form-dbp').value = 86;
+    document.getElementById('form-chol').value = 215;
+    document.getElementById('form-glucose').value = 114;
+    document.getElementById('form-bmi').value = 27.8;
+    document.getElementById('form-smoking').value = 'Former';
+    document.getElementById('form-alcohol').value = 'Low';
+    document.getElementById('form-exercise').value = 'Light';
+    document.getElementById('form-diet').value = 'Average';
+    document.getElementById('form-chest-pain').value = 'Atypical';
+    document.getElementById('form-fatigue').value = 'Mild';
+    document.getElementById('form-dizziness').value = 'None';
+  } else if (type === 'healthy') {
+    document.getElementById('form-age').value = 34;
+    document.getElementById('form-gender').value = 'Female';
+    document.getElementById('form-sbp').value = 114;
+    document.getElementById('form-dbp').value = 74;
+    document.getElementById('form-chol').value = 175;
+    document.getElementById('form-glucose').value = 88;
+    document.getElementById('form-bmi').value = 22.4;
+    document.getElementById('form-smoking').value = 'Never';
+    document.getElementById('form-alcohol').value = 'None';
+    document.getElementById('form-exercise').value = 'Vigorous';
+    document.getElementById('form-diet').value = 'Healthy';
+    document.getElementById('form-chest-pain').value = 'None';
+    document.getElementById('form-fatigue').value = 'None';
+    document.getElementById('form-dizziness').value = 'None';
+  }
+  document.getElementById('risk-agent-form').dispatchEvent(new Event('submit'));
+}
+
+document.getElementById('risk-agent-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const payload = {
+    age: parseInt(document.getElementById('form-age').value),
+    gender: document.getElementById('form-gender').value,
+    systolic_bp: parseInt(document.getElementById('form-sbp').value),
+    diastolic_bp: parseInt(document.getElementById('form-dbp').value),
+    total_cholesterol: parseInt(document.getElementById('form-chol').value),
+    fasting_glucose: parseInt(document.getElementById('form-glucose').value),
+    bmi: parseFloat(document.getElementById('form-bmi').value),
+    smoking_habit: document.getElementById('form-smoking').value,
+    alcohol_consumption: document.getElementById('form-alcohol').value,
+    exercise_level: document.getElementById('form-exercise').value,
+    diet_quality: document.getElementById('form-diet').value,
+    chest_pain_symptoms: document.getElementById('form-chest-pain').value,
+    fatigue_condition: document.getElementById('form-fatigue').value,
+    dizziness_patterns: document.getElementById('form-dizziness').value
+  };
+
+  fetch('/api/assess-risk', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(res => res.json())
+  .then(data => {
+    updateAssessmentUI(data);
+  })
+  .catch(err => {
+    console.warn("API request fallback to client-side evaluation:", err);
+    // Instant client-side fallback
+    const res = clientSideRiskCalculation(payload);
+    updateAssessmentUI(res);
+  });
+});
+
+function updateAssessmentUI(data) {
+  const badge = document.getElementById('res-triage-badge');
+  badge.textContent = data.risk_tier;
+  badge.className = 'badge fs-6 px-3 py-2 bg-' + data.badge_color;
+
+  const scoreEl = document.getElementById('res-risk-score');
+  scoreEl.innerHTML = data.overall_risk_score + ' <small class="fs-5 text-muted">/ 100</small>';
+  scoreEl.className = 'display-4 fw-bold mb-2 text-' + data.badge_color;
+
+  const bar = document.getElementById('res-progress-bar');
+  bar.style.width = data.overall_risk_score + '%';
+  bar.className = 'progress-bar bg-' + data.badge_color;
+
+  document.getElementById('res-cad-risk').textContent = data.cad_risk_pct + '%';
+  document.getElementById('res-diabetes-risk').textContent = data.diabetes_risk_pct + '%';
+  document.getElementById('res-stroke-risk').textContent = data.stroke_risk_pct + '%';
+  document.getElementById('res-bp-stage').textContent = data.bp_stage;
+  document.getElementById('res-bmi-tier').textContent = data.bmi_tier;
+
+  const alertsContainer = document.getElementById('res-alerts-container');
+  alertsContainer.innerHTML = '';
+  if (data.clinical_alerts && data.clinical_alerts.length > 0) {
+    data.clinical_alerts.forEach(alert => {
+      const div = document.createElement('div');
+      div.className = 'alert alert-danger py-2 small mb-1';
+      div.innerHTML = '<i class="fa-solid fa-triangle-exclamation me-1"></i> ' + alert;
+      alertsContainer.appendChild(div);
+    });
+  } else {
+    alertsContainer.innerHTML = '<div class="alert alert-success py-2 small mb-1"><i class="fa-solid fa-check me-1"></i> Biomarkers within normal expected clinical boundaries.</div>';
+  }
+
+  const recList = document.getElementById('res-recommendations-list');
+  recList.innerHTML = '';
+  if (data.recommendations && data.recommendations.length > 0) {
+    data.recommendations.forEach(rec => {
+      const li = document.createElement('li');
+      li.className = 'list-group-item px-0 py-1 text-muted';
+      li.innerHTML = '<i class="fa-solid fa-check text-success me-2"></i> ' + rec;
+      recList.appendChild(li);
+    });
+  }
+}
+
+function clientSideRiskCalculation(d) {
+  let cad = 5.0 + (d.age * 0.35);
+  if (d.systolic_bp >= 160) cad += 25;
+  else if (d.systolic_bp >= 140) cad += 15;
+  else if (d.systolic_bp >= 130) cad += 8;
+  if (d.total_cholesterol >= 240) cad += 20;
+  else if (d.total_cholesterol >= 200) cad += 10;
+  if (d.smoking_habit === 'Current Daily') cad += 18;
+  if (d.chest_pain_symptoms === 'Typical Angina / Severe') cad += 25;
+  cad = Math.min(98.0, Math.round(cad * 10) / 10);
+
+  let diab = 4.0;
+  if (d.fasting_glucose >= 126) diab += 65;
+  else if (d.fasting_glucose >= 100) diab += 28;
+  if (d.bmi >= 30.0) diab += 18;
+  diab = Math.min(98.0, Math.round(diab * 10) / 10);
+
+  let stroke = 3.0 + (d.age * 0.30);
+  if (d.systolic_bp >= 160) stroke += 30;
+  else if (d.systolic_bp >= 140) stroke += 16;
+  if (d.smoking_habit === 'Current Daily') stroke += 15;
+  if (d.alcohol_consumption === 'Heavy') stroke += 14;
+  stroke = Math.min(96.0, Math.round(stroke * 10) / 10);
+
+  let overall = Math.round(((cad * 0.38) + (diab * 0.32) + (stroke * 0.30)) * 10) / 10;
+
+  let tier = 'Low Risk', color = 'success';
+  if (overall >= 75.0 || d.systolic_bp >= 180 || d.chest_pain_symptoms === 'Typical Angina / Severe') {
+    tier = 'Critical / Urgent'; color = 'danger';
+  } else if (overall >= 55.0 || d.systolic_bp >= 140) {
+    tier = 'High Risk'; color = 'warning';
+  } else if (overall >= 35.0 || d.bmi >= 30.0 || d.fasting_glucose >= 100) {
+    tier = 'Moderate Risk'; color = 'info';
+  }
+
+  let bpStage = 'Normal';
+  if (d.systolic_bp >= 180 || d.diastolic_bp >= 120) bpStage = 'Hypertensive Crisis';
+  else if (d.systolic_bp >= 140 || d.diastolic_bp >= 90) bpStage = 'Hypertension Stage 2';
+  else if (d.systolic_bp >= 130 || d.diastolic_bp >= 80) bpStage = 'Hypertension Stage 1';
+  else if (d.systolic_bp >= 120 && d.diastolic_bp < 80) bpStage = 'Elevated';
+
+  let bmiTier = 'Normal Weight';
+  if (d.bmi >= 35.0) bmiTier = 'Obese Class II/III';
+  else if (d.bmi >= 30.0) bmiTier = 'Obese Class I';
+  else if (d.bmi >= 25.0) bmiTier = 'Overweight';
+  else if (d.bmi < 18.5) bmiTier = 'Underweight';
+
+  let alerts = [];
+  if (d.systolic_bp >= 180) alerts.push('CRITICAL: Hypertensive Crisis Threshold Reached.');
+  else if (d.systolic_bp >= 140) alerts.push('ALERT: Hypertension Stage 2 detected.');
+  if (d.fasting_glucose >= 126) alerts.push('ALERT: Fasting glucose in diabetic range (>=126 mg/dL).');
+  if (d.total_cholesterol >= 240) alerts.push('ALERT: Severe hypercholesterolemia.');
+
+  let recs = [];
+  if (tier === 'Critical / Urgent') {
+    recs = ['Immediate emergency triage & 12-lead ECG', 'Urgent cardiology consultation', 'Continuous BP telemetry'];
+  } else if (tier === 'High Risk') {
+    recs = ['Specialist referral within 7 days', '24-hour ambulatory BP monitoring', 'Smoking cessation program'];
+  } else if (tier === 'Moderate Risk') {
+    recs = ['Lifestyle modification: 150 min aerobic exercise weekly', 'Dietary counseling for sodium reduction', 'Repeat lab panel in 90 days'];
+  } else {
+    recs = ['Maintain healthy routine', 'Annual preventative screening'];
+  }
+
+  return {
+    overall_risk_score: overall,
+    risk_tier: tier,
+    badge_color: color,
+    cad_risk_pct: cad,
+    diabetes_risk_pct: diab,
+    stroke_risk_pct: stroke,
+    bp_stage: bpStage,
+    bmi_tier: bmiTier,
+    clinical_alerts: alerts,
+    recommendations: recs
+  };
+}
+</script>
+{% endblock %}

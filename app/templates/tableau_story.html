@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% block title %}Chronic Disease Strategic Tableau Story{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-4">
+  <div class="col-md-8">
+    <div class="d-flex align-items-center">
+      <div class="avatar-lg bg-warning text-dark rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+        <i class="fa-solid fa-book-open fs-4"></i>
+      </div>
+      <div>
+        <h3 class="fw-bold mb-0">Chronic Disease Early Detection &amp; Prevention Storyboard</h3>
+        <p class="text-muted mb-0 small">Executive Walkthrough &bull; <strong>5 Clinical Story Scenes</strong> &bull; From Risk Identification to Targeted Intervention</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 text-md-end mt-3 mt-md-0">
+    <span class="badge bg-warning text-dark p-2 px-3 fw-bold"><i class="fa-solid fa-layer-group me-1"></i> 5 Story Points Configured</span>
+  </div>
+</div>
+
+<!-- Story Navigation Tabs -->
+<ul class="nav nav-pills nav-fill bg-white p-2 rounded-4 shadow-sm mb-4" id="storyTabs" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active fw-semibold text-start" id="scene1-tab" data-bs-toggle="pill" data-bs-target="#scene1" type="button" role="tab">
+      <div class="small text-muted">Scene 1</div>
+      <div>1. Escalating Burden</div>
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link fw-semibold text-start" id="scene2-tab" data-bs-toggle="pill" data-bs-target="#scene2" type="button" role="tab">
+      <div class="small text-muted">Scene 2 (Dr. Carter)</div>
+      <div>2. Clinical Stratification</div>
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link fw-semibold text-start" id="scene3-tab" data-bs-toggle="pill" data-bs-target="#scene3" type="button" role="tab">
+      <div class="small text-muted">Scene 3 (Emily R.)</div>
+      <div>3. Behavioral Determinants</div>
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link fw-semibold text-start" id="scene4-tab" data-bs-toggle="pill" data-bs-target="#scene4" type="button" role="tab">
+      <div class="small text-muted">Scene 4 (Dr. Priya)</div>
+      <div>4. Vulnerable Cohorts</div>
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link fw-semibold text-start" id="scene5-tab" data-bs-toggle="pill" data-bs-target="#scene5" type="button" role="tab">
+      <div class="small text-muted">Scene 5</div>
+      <div>5. Proactive Prevention</div>
+    </button>
+  </li>
+</ul>
+
+<!-- Story Tab Content -->
+<div class="tab-content" id="storyTabsContent">
+  <!-- Scene 1 -->
+  <div class="tab-pane fade show active" id="scene1" role="tabpanel">
+    <div class="card border-0 shadow-sm rounded-4 p-4">
+      <div class="row align-items-center mb-4">
+        <div class="col-lg-8">
+          <span class="badge bg-primary mb-2">Scene 1: Epidemiological Baseline</span>
+          <h4 class="fw-bold text-primary">The Escalating Burden of Chronic Illness in Modern Healthcare</h4>
+          <p class="text-muted">
+            Across our 6,000-patient analyzed population, chronic non-communicable diseases constitute over <strong>62% of inpatient hospital admissions</strong>. Coronary Heart Disease affects 22.4%, Diabetes Mellitus accounts for 19.8%, and Stroke incidence stands at 7.6%. Left unaddressed, delayed detection leads to severe medical emergencies, emergency room overcrowding, and ballooning annual treatment expenditures.
+          </p>
+        </div>
+        <div class="col-lg-4 text-center">
+          <div class="bg-light p-3 rounded-4 border">
+            <h6 class="text-muted mb-1 small text-uppercase">Multi-morbidity Burden</h6>
+            <h3 class="fw-bold text-danger mb-0">1,492 Patients</h3>
+            <small class="text-muted">Carry 2 or more chronic conditions simultaneously</small>
+          </div>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card bg-light border-0 p-3 rounded-4 text-center">
+            <i class="fa-solid fa-heart-pulse text-danger fs-2 mb-2"></i>
+            <h5 class="fw-bold mb-0">1,344 Cases</h5>
+            <small class="text-muted">Coronary Heart Disease (CAD)</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-light border-0 p-3 rounded-4 text-center">
+            <i class="fa-solid fa-droplet text-info fs-2 mb-2"></i>
+            <h5 class="fw-bold mb-0">1,188 Cases</h5>
+            <small class="text-muted">Type 2 Diabetes Mellitus</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-light border-0 p-3 rounded-4 text-center">
+            <i class="fa-solid fa-brain text-warning fs-2 mb-2"></i>
+            <h5 class="fw-bold mb-0">456 Cases</h5>
+            <small class="text-muted">Cerebrovascular Stroke Events</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 2 -->
+  <div class="tab-pane fade" id="scene2" role="tabpanel">
+    <div class="card border-0 shadow-sm rounded-4 p-4">
+      <span class="badge bg-danger mb-2" style="width: fit-content;">Scene 2: Clinical Risk Officer Lens</span>
+      <h4 class="fw-bold text-danger">Dr. Michael Carter: Clinical Risk Stratification &amp; Early Triage</h4>
+      <p class="text-muted">
+        By transitioning from reactive treatment to proactive clinical scoring, Dr. Carter stratifies patients into actionable risk tiers using hemodynamic and metabolic indicators. The data reveals that <strong>642 patients</strong> are currently in the <em>Critical / Urgent</em> triage tier with SBP &ge; 170 mmHg, severe chest pain symptoms, or acute glycemic spikes.
+      </p>
+      <div class="alert alert-danger border-0 rounded-4">
+        <h6 class="fw-bold mb-1"><i class="fa-solid fa-triangle-exclamation me-2"></i> Key Clinical Finding:</h6>
+        Patients presenting with concurrent Stage 2 Hypertension (SBP &ge; 140) and elevated total cholesterol (&ge; 240 mg/dL) suffer a <strong>4.6-fold higher rate of acute coronary events</strong> within 24 months if left untriaged.
+      </div>
+      <div class="text-end">
+        <a href="/clinical-officer" class="btn btn-primary fw-semibold"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Open Dr. Carter's Triage Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 3 -->
+  <div class="tab-pane fade" id="scene3" role="tabpanel">
+    <div class="card border-0 shadow-sm rounded-4 p-4">
+      <span class="badge bg-success mb-2" style="width: fit-content;">Scene 3: Healthcare Data Analyst Lens</span>
+      <h4 class="fw-bold text-success">Emily Rodriguez: Uncovering Modifiable Behavioral Determinants</h4>
+      <p class="text-muted">
+        Emily's multi-variable correlation models identify lifestyle habits as the single largest preventable contributor to chronic morbidity. The interactive heatmaps prove that <strong>Current Daily Smoking</strong> increases CAD rates to 38.6%, while <strong>Sedentary Lifestyles</strong> multiply diabetes occurrence by 2.2x. Conversely, 150 minutes of weekly moderate exercise acts as a robust protective buffer.
+      </p>
+      <div class="alert alert-success border-0 rounded-4">
+        <h6 class="fw-bold mb-1"><i class="fa-solid fa-shield-heart me-2"></i> Behavioral Impact Takeaway:</h6>
+        Coupling a Heart-Healthy diet with moderate-to-vigorous exercise reduces the incidence of full metabolic syndrome from 44.8% down to 11.2% across identical age bands.
+      </div>
+      <div class="text-end">
+        <a href="/data-analyst" class="btn btn-success fw-semibold"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Open Emily's Lifestyle Correlation Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 4 -->
+  <div class="tab-pane fade" id="scene4" role="tabpanel">
+    <div class="card border-0 shadow-sm rounded-4 p-4">
+      <span class="badge bg-info text-dark mb-2" style="width: fit-content;">Scene 4: Public Health Researcher Lens</span>
+      <h4 class="fw-bold text-info-emphasis">Dr. Priya Nair: Protecting Vulnerable Populations &amp; Addressing Disparities</h4>
+      <p class="text-muted">
+        Dr. Priya Nair's epidemiological cross-sectional analysis highlights severe vulnerability among senior citizens (65+) and individuals within the Class II/III Obesity category (BMI &ge; 35). In addition, chronic fatigue and exertional chest pain form a recognized symptom cluster that precedes primary hospital admission by an average of 4.2 months.
+      </p>
+      <div class="alert alert-info border-0 rounded-4">
+        <h6 class="fw-bold mb-1"><i class="fa-solid fa-circle-nodes me-2"></i> Population Health Finding:</h6>
+        Senior patients living with obesity represent 14.8% of the cohort but consume 41.5% of total cardiovascular emergency resources.
+      </div>
+      <div class="text-end">
+        <a href="/public-health" class="btn btn-info text-dark fw-semibold"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Open Dr. Priya's Epidemiology Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 5 -->
+  <div class="tab-pane fade" id="scene5" role="tabpanel">
+    <div class="card border-0 shadow-sm rounded-4 p-4">
+      <span class="badge bg-warning text-dark mb-2" style="width: fit-content;">Scene 5: Strategic Synthesis &amp; Road Ahead</span>
+      <h4 class="fw-bold text-dark">Strategic Action Plan: Proactive Interventions &amp; Resource Optimization</h4>
+      <p class="text-muted">
+        The synthesis of all three perspectives establishes a 4-tier proactive healthcare management roadmap:
+      </p>
+      <div class="row g-3 mb-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="p-3 bg-danger-subtle text-danger rounded-4 h-100">
+            <h6 class="fw-bold mb-1">1. Critical Tier (642)</h6>
+            <small>Immediate inpatient admission, telemetric blood pressure monitoring, stat dual therapy.</small>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-3 bg-warning-subtle text-warning-emphasis rounded-4 h-100">
+            <h6 class="fw-bold mb-1">2. High Risk (982)</h6>
+            <small>7-day specialist review, 24-hr ambulatory BP monitoring, intensive smoking cessation.</small>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-3 bg-info-subtle text-info-emphasis rounded-4 h-100">
+            <h6 class="fw-bold mb-1">3. Moderate Risk (2,410)</h6>
+            <small>Community lifestyle reversal classes, quarterly HbA1c screening, nutritional counseling.</small>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="p-3 bg-success-subtle text-success rounded-4 h-100">
+            <h6 class="fw-bold mb-1">4. Low Risk (1,966)</h6>
+            <small>Annual preventative physical exams, automated wellness reminders, digital health logs.</small>
+          </div>
+        </div>
+      </div>
+      <div class="text-center pt-2">
+        <a href="/risk-assessment-agent" class="btn btn-warning text-dark fw-bold px-4 py-2"><i class="fa-solid fa-robot me-1"></i> Try Interactive Patient Risk Assessment Agent</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

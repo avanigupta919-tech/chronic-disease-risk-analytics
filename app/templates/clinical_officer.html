@@ -1,0 +1,224 @@
+{% extends "base.html" %}
+{% block title %}Dr. Michael Carter — Clinical Risk Assessment Dashboard{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-4">
+  <div class="col-md-8">
+    <div class="d-flex align-items-center">
+      <div class="avatar-lg bg-primary text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+        <i class="fa-solid fa-user-doctor fs-4"></i>
+      </div>
+      <div>
+        <h3 class="fw-bold mb-0">Clinical Risk Assessment &amp; Patient Triage</h3>
+        <p class="text-muted mb-0 small"><strong>Scenario 1: Dr. Michael Carter</strong> &bull; Early High-Risk Detection &bull; Hemodynamic &amp; Metabolic Indicators</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 text-md-end mt-3 mt-md-0">
+    <span class="badge bg-danger p-2 px-3 fw-bold"><i class="fa-solid fa-bell me-1"></i> 1,624 High Risk Patients Flagged</span>
+  </div>
+</div>
+
+<!-- Clinical KPI Row -->
+<div class="row g-3 mb-4">
+  <div class="col-md-6 col-lg-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 border-start border-danger border-4">
+      <div class="card-body">
+        <div class="text-muted small text-uppercase fw-bold">Critical / Urgent Triage</div>
+        <h2 class="fw-bold text-danger mb-0">642</h2>
+        <small class="text-danger"><i class="fa-solid fa-arrow-trend-up me-1"></i> Immediate action required</small>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 border-start border-warning border-4">
+      <div class="card-body">
+        <div class="text-muted small text-uppercase fw-bold">Stage 2 Hypertension</div>
+        <h2 class="fw-bold text-warning-emphasis mb-0">1,940</h2>
+        <small class="text-muted">SBP &ge; 140 or DBP &ge; 90 mmHg</small>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 border-start border-info border-4">
+      <div class="card-body">
+        <div class="text-muted small text-uppercase fw-bold">Diabetic Hyperglycemia</div>
+        <h2 class="fw-bold text-info-emphasis mb-0">1,188</h2>
+        <small class="text-muted">Fasting Glucose &ge; 126 mg/dL</small>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-3">
+    <div class="card border-0 shadow-sm rounded-4 h-100 border-start border-primary border-4">
+      <div class="card-body">
+        <div class="text-muted small text-uppercase fw-bold">Severe Lipidemia</div>
+        <h2 class="fw-bold text-primary mb-0">1,412</h2>
+        <small class="text-muted">Total Cholesterol &ge; 240 mg/dL</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Interactive Charts Row -->
+<div class="row g-4 mb-4">
+  <!-- Chart 1: Blood Pressure Stages -->
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm rounded-4 h-100">
+      <div class="card-header bg-white border-0 pt-3 px-4 d-flex justify-content-between align-items-center">
+        <h6 class="fw-bold mb-0 text-secondary"><i class="fa-solid fa-stethoscope me-2 text-danger"></i> Blood Pressure Stage Distribution (AHA Standard)</h6>
+        <span class="badge bg-light text-dark border">6,000 Cohort</span>
+      </div>
+      <div class="card-body px-4">
+        <canvas id="chart-bp-distribution" height="240"></canvas>
+      </div>
+      <div class="card-footer bg-light border-0 small text-muted py-2 px-4 rounded-bottom-4">
+        <i class="fa-solid fa-info-circle me-1"></i> Over 32% of patients present with Stage 2 or Hypertensive Crisis levels.
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart 2: Fasting Glucose vs BMI Risk -->
+  <div class="col-lg-6">
+    <div class="card border-0 shadow-sm rounded-4 h-100">
+      <div class="card-header bg-white border-0 pt-3 px-4 d-flex justify-content-between align-items-center">
+        <h6 class="fw-bold mb-0 text-secondary"><i class="fa-solid fa-chart-scatter me-2 text-primary"></i> Fasting Glucose vs. BMI Risk Stratification</h6>
+        <span class="badge bg-light text-dark border">Dual Indicator</span>
+      </div>
+      <div class="card-body px-4">
+        <canvas id="chart-glucose-bmi" height="240"></canvas>
+      </div>
+      <div class="card-footer bg-light border-0 small text-muted py-2 px-4 rounded-bottom-4">
+        <i class="fa-solid fa-info-circle me-1"></i> High BMI (&ge; 30) correlates with an 84% surge in diabetic hyperglycemia cases.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- High-Risk Patient Triage Roster -->
+<div class="row g-4 mb-4">
+  <div class="col-12">
+    <div class="card border-0 shadow-sm rounded-4">
+      <div class="card-header bg-white border-0 pt-4 px-4 pb-2 d-flex flex-wrap justify-content-between align-items-center">
+        <div>
+          <h5 class="fw-bold mb-1"><i class="fa-solid fa-table-list me-2 text-danger"></i> High-Risk Patient Clinical Triage Roster</h5>
+          <small class="text-muted">Early identification roster prioritized by multi-factorial clinical risk score</small>
+        </div>
+        <div class="d-flex gap-2 mt-2 mt-sm-0">
+          <input type="text" id="roster-search" class="form-control form-control-sm" placeholder="Search Patient ID..." style="width: 200px;">
+          <select id="roster-filter-tier" class="form-select form-select-sm" style="width: 180px;">
+            <option value="ALL">All Triage Tiers</option>
+            <option value="Critical / Urgent" selected>Critical / Urgent Only</option>
+            <option value="High Risk">High Risk Only</option>
+            <option value="Moderate Risk">Moderate Risk Only</option>
+          </select>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0" id="triage-table">
+            <thead class="table-light">
+              <tr class="small text-uppercase">
+                <th class="ps-4">Patient ID</th>
+                <th>Age / Gender</th>
+                <th>BP (mmHg)</th>
+                <th>Cholesterol</th>
+                <th>Glucose</th>
+                <th>BMI</th>
+                <th>Risk Score</th>
+                <th>Triage Tier</th>
+                <th class="pe-4">Clinical Action</th>
+              </tr>
+            </thead>
+            <tbody id="triage-tbody">
+              <!-- Dynamically populated via JavaScript / API -->
+              <tr>
+                <td class="ps-4 fw-bold">PAT-10042</td>
+                <td>68 / Male</td>
+                <td><span class="badge bg-danger">174 / 102</span></td>
+                <td>278 mg/dL</td>
+                <td>195 mg/dL</td>
+                <td>34.2</td>
+                <td><span class="fw-bold text-danger">91.4</span></td>
+                <td><span class="badge bg-danger">Critical / Urgent</span></td>
+                <td class="pe-4 small text-danger fw-semibold">Immediate inpatient telemetry &amp; ECG</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">PAT-10118</td>
+                <td>72 / Female</td>
+                <td><span class="badge bg-danger">182 / 108</span></td>
+                <td>262 mg/dL</td>
+                <td>210 mg/dL</td>
+                <td>36.5</td>
+                <td><span class="fw-bold text-danger">94.8</span></td>
+                <td><span class="badge bg-danger">Critical / Urgent</span></td>
+                <td class="pe-4 small text-danger fw-semibold">Hypertensive crisis protocol &amp; cardiology consult</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">PAT-10255</td>
+                <td>64 / Male</td>
+                <td><span class="badge bg-warning text-dark">156 / 94</span></td>
+                <td>248 mg/dL</td>
+                <td>162 mg/dL</td>
+                <td>31.8</td>
+                <td><span class="fw-bold text-warning-emphasis">78.2</span></td>
+                <td><span class="badge bg-warning text-dark">High Risk</span></td>
+                <td class="pe-4 small text-secondary">Specialist review within 7 days, dual-therapy</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">PAT-10389</td>
+                <td>59 / Female</td>
+                <td><span class="badge bg-warning text-dark">148 / 92</span></td>
+                <td>236 mg/dL</td>
+                <td>145 mg/dL</td>
+                <td>29.4</td>
+                <td><span class="fw-bold text-warning-emphasis">68.5</span></td>
+                <td><span class="badge bg-warning text-dark">High Risk</span></td>
+                <td class="pe-4 small text-secondary">Cardiovascular risk review &amp; statin titration</td>
+              </tr>
+              <tr>
+                <td class="ps-4 fw-bold">PAT-10512</td>
+                <td>51 / Male</td>
+                <td><span class="badge bg-info text-dark">138 / 88</span></td>
+                <td>215 mg/dL</td>
+                <td>118 mg/dL</td>
+                <td>28.1</td>
+                <td><span class="fw-bold text-info-emphasis">52.4</span></td>
+                <td><span class="badge bg-info text-dark">Moderate Risk</span></td>
+                <td class="pe-4 small text-muted">Lifestyle intervention &amp; 90-day glucose follow-up</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer bg-white border-0 py-3 px-4 d-flex justify-content-between align-items-center">
+        <small class="text-muted">Showing high-urgency patient cohort (Filtered from 6,000 total records)</small>
+        <a href="/tableau-story" class="btn btn-sm btn-outline-primary">View in Tableau Story <i class="fa-solid fa-arrow-right ms-1"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tableau Embedded Live View Container -->
+<div class="row g-4">
+  <div class="col-12">
+    <div class="card border-0 shadow-sm rounded-4">
+      <div class="card-header bg-white border-0 pt-4 px-4 d-flex justify-content-between align-items-center">
+        <div>
+          <h5 class="fw-bold mb-1"><i class="fa-solid fa-chart-simple me-2 text-primary"></i> Scenario 1: Tableau Workbook Direct Integration</h5>
+          <small class="text-muted">Embed reference for <code>Chronic_Disease_Risk_Analysis.twb</code> &bull; Sheet: <code>Dashboard_Clinical_Risk_Officer</code></small>
+        </div>
+        <span class="badge bg-success-subtle text-success border border-success">Tableau 2024.1 Ready</span>
+      </div>
+      <div class="card-body px-4 py-3">
+        <div class="p-4 bg-light rounded-4 border text-center">
+          <p class="mb-2 fw-semibold text-secondary">Tableau Workbook Connection Path:</p>
+          <code class="d-inline-block bg-white px-3 py-2 rounded border small mb-3">tableau/Chronic_Disease_Risk_Analysis.twb -> Sheet: Dashboard_Clinical_Risk_Officer</code>
+          <p class="text-muted small mb-0">
+            For online publishing: upload this workbook to Tableau Public or your corporate Tableau Server, and paste your embed URL in <code>app/app.py</code> to render the live interactive Tableau JS API frame here.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

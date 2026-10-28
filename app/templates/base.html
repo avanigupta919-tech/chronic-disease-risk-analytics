@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Chronic Disease Health Risk Assessment{% endblock %}</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/static/css/styles.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body class="bg-light">
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="/">
+        <i class="fa-solid fa-heart-pulse me-2 text-danger bg-white p-2 rounded-circle fs-6"></i>
+        <span>HealthPulse AI <small class="fw-light fs-6 opacity-75">| Chronic Disease Risk Platform</small></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item">
+            <a class="nav-link {% if active_page == 'home' %}active fw-semibold{% endif %}" href="/">
+              <i class="fa-solid fa-house me-1"></i> Overview
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_page == 'clinical' %}active fw-semibold{% endif %}" href="/clinical-officer">
+              <i class="fa-solid fa-user-doctor me-1"></i> Dr. Carter (Clinical)
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_page == 'analyst' %}active fw-semibold{% endif %}" href="/data-analyst">
+              <i class="fa-solid fa-chart-line me-1"></i> Emily R. (Lifestyle)
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_page == 'public_health' %}active fw-semibold{% endif %}" href="/public-health">
+              <i class="fa-solid fa-users me-1"></i> Dr. Priya (Population)
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_page == 'story' %}active fw-semibold{% endif %}" href="/tableau-story">
+              <i class="fa-solid fa-book-open me-1"></i> Tableau Story
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_page == 'agent' %}active fw-semibold text-warning{% endif %}" href="/risk-assessment-agent">
+              <i class="fa-solid fa-robot me-1"></i> Risk Agent
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_page == 'performance' %}active fw-semibold{% endif %}" href="/performance">
+              <i class="fa-solid fa-gauge-high me-1"></i> Performance
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if active_page == 'docs' %}active fw-semibold{% endif %}" href="/documentation">
+              <i class="fa-solid fa-file-lines me-1"></i> Docs
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="container-fluid px-4 py-4">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-top py-3 mt-5">
+    <div class="container text-center text-muted small">
+      <div class="d-flex justify-content-between align-items-center flex-wrap">
+        <span>&copy; 2026 HealthPulse AI — Chronic Disease Risk Assessment &amp; Patient Monitoring Platform</span>
+        <span>Tableau Desktop &amp; Flask Web Integration | 8 Epics &bull; 14 Stories &bull; 6,000 Patient Records</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Charts & Interactivity -->
+  <script src="/static/js/charts.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
