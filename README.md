@@ -148,11 +148,31 @@ chronic-disease-risk-analytics/
 
 ## 🚀 Quickstart & Installation
 
-### 1. Clone the Repository
+### 1. Upload to Your GitHub Repository
+The project includes a pre-configured Git repository and an automated upload helper:
+
+#### Method A: Using GitHub CLI (`gh` pre-installed)
 ```bash
-git clone https://github.com/your-username/chronic-disease-risk-analytics.git
-cd chronic-disease-risk-analytics
+# 1. Authenticate with GitHub
+gh auth login
+
+# 2. Automatically create repository and push all commits
+gh repo create chronic-disease-risk-analytics --public --source=. --remote=origin --push
 ```
+
+#### Method B: Using Personal Access Token (One-Click Python Script)
+```bash
+python scripts/push_to_github.py --token <YOUR_GITHUB_PAT_TOKEN>
+```
+
+#### Method C: Standard Git Remote Commands
+```bash
+git remote add origin https://github.com/<YOUR_GITHUB_USERNAME>/chronic-disease-risk-analytics.git
+git branch -M main
+git push -u origin main
+```
+
+---
 
 ### 2. Run the Application
 You can run the application directly with Python (Python 3.10+):
